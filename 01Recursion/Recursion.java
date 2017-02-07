@@ -3,7 +3,12 @@ public class Recursion{
 	return "Gao,Jenny";
     }
     public static double sqrt(double n){
-	return helper(n,1);
+	if(n<0){
+	    throw new IllegalArgumentException();
+	}
+	else{
+	    return helper(n,1);
+	}
     }
     public static double helper(double n, double guess){
 	if(Math.abs((Math.pow(guess,2)-n)/n)<=0.00000000001){
