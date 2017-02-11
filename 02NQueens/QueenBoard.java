@@ -136,22 +136,33 @@ public class QueenBoard{
      */
     public String toString(){
 	String retString="";
-	for(int i=0;i<board.length;i++){
-	    for(int j=0;j<board.length;j++){
-		if(board[i][j]==-1){
-		    retString+="Q";
+	if(this.solve()){
+	    for(int i=0;i<board.length;i++){
+		for(int j=0;j<board.length;j++){
+		    if(board[i][j]==-1){
+			retString+="Q";
+		    }
+		    else{
+			retString+="_";
+		    }
 		}
-		else{
+		retString+="\n";
+	    }		    
+	    return retString;
+	}
+	else{
+	    for(int i=0;i<board.length;i++){
+		for(int j=0;j<board.length;j++){
 		    retString+="_";
 		}
-	    }
-	    retString+="\n";
-	}		    
-    	return retString;
+		retString+="\n";
+	    }		    
+	    return retString;
+	}
     }
     public static void main(String[] args){
-	QueenBoard test=new QueenBoard(6);
-	System.out.println(test.solve());
+	QueenBoard test=new QueenBoard(4);
+	//System.out.println(test.solve());
 	//test.solve();
 	//System.out.println(test.solve());
 	System.out.println(test);
