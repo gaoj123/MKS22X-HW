@@ -24,12 +24,14 @@ public class QueenBoard{
      *all n queens. Uses solveH
      */
     public void solve(){
-	if(solveH(0)){
-	    System.out.println(this);
-	}
+	solveH(0);
+	// if(solveH(0)){
+	//     System.out.println(this);
+	// }
     }
     
     public void countSolutions(){
+	solveH(0);
 	if(solved&&oneAtLeast){
 	    solutionCount+=1;
 	}
@@ -222,78 +224,80 @@ public class QueenBoard{
     // }
     public static void main(String[] args){
 	//Note: solve() prints the board with Qs and _s
-	QueenBoard test=new QueenBoard(4);
-	test.solve();
-	System.out.println(test);
-	test.countSolutions();
-	System.out.println(test.getCount());
-	System.out.println(test.getSolutionCount());
-	QueenBoard test2=new QueenBoard(4);
-	test2.solve();
-	System.out.println(test2);
-	test2.countSolutions();
-	System.out.println(test2.getCount());
-	System.out.println(test2.getSolutionCount());
+	// QueenBoard test=new QueenBoard(4);
+	// test.solve();
+	// System.out.println(test);
+	// test.countSolutions();
+	// System.out.println(test.getCount());
+	// System.out.println(test.getSolutionCount());
+	// QueenBoard test2=new QueenBoard(4);
+	// test2.solve();
+	// System.out.println(test2);
+	// test2.countSolutions();
+	// System.out.println(test2.getCount());
+	// System.out.println(test2.getSolutionCount());
+	// System.out.println("\n\n");
+	// QueenBoard one=new QueenBoard(1);
+	// one.solve();
+        // one.countSolutions();
+	// System.out.println(one.getCount());
+	// System.out.println("\n\n");
+	// QueenBoard two=new QueenBoard(2);
+	// two.solve();
+        // two.countSolutions();
+	// System.out.println(two.getCount());
+	// System.out.println("\n\n");
+	// QueenBoard three=new QueenBoard(3);
+	// three.solve();
+        // three.countSolutions();
+	// System.out.println(three.getCount());
+	// System.out.println("\n\n");
+	// QueenBoard four=new QueenBoard(4);
+	// four.solve();
+        // four.countSolutions();
+	// System.out.println(four.getCount());
+	// System.out.println("\n\n");
+	// QueenBoard five=new QueenBoard(5);
+	// five.solve();
+        // five.countSolutions();
+	// System.out.println(five.getCount());
+	// System.out.println("\n\n");
+	// QueenBoard six=new QueenBoard(6);
+	// six.solve();
+        // six.countSolutions();
+	// System.out.println(six.getCount());
+	// System.out.println("\n\n");
+	// QueenBoard seven=new QueenBoard(7);
+	// seven.solve();
+        // seven.countSolutions();
+	// System.out.println(seven.getCount());
+	// System.out.println("\n\n");
+	 QueenBoard eight=new QueenBoard(8);
+	 //eight.solve();
+	 // System.out.println(eight);
+         eight.countSolutions();
+	 System.out.println(eight.getCount());
+	// System.out.println("\n\n");
+	// QueenBoard nine=new QueenBoard(9);
+	// nine.solve();
+        // nine.countSolutions();
+	// System.out.println(nine.getCount());
+	// System.out.println("\n\n");
+	//QueenBoard ten=new QueenBoard(10);
+	//ten.solve();
+	//System.out.println(ten);
+	//ten.countSolutions();
+	//System.out.println(ten.getCount());
 	System.out.println("\n\n");
-	QueenBoard one=new QueenBoard(1);
-	one.solve();
-        one.countSolutions();
-	System.out.println(one.getCount());
-	System.out.println("\n\n");
-	QueenBoard two=new QueenBoard(2);
-	two.solve();
-        two.countSolutions();
-	System.out.println(two.getCount());
-	System.out.println("\n\n");
-	QueenBoard three=new QueenBoard(3);
-	three.solve();
-        three.countSolutions();
-	System.out.println(three.getCount());
-	System.out.println("\n\n");
-	QueenBoard four=new QueenBoard(4);
-	four.solve();
-        four.countSolutions();
-	System.out.println(four.getCount());
-	System.out.println("\n\n");
-	QueenBoard five=new QueenBoard(5);
-	five.solve();
-        five.countSolutions();
-	System.out.println(five.getCount());
-	System.out.println("\n\n");
-	QueenBoard six=new QueenBoard(6);
-	six.solve();
-        six.countSolutions();
-	System.out.println(six.getCount());
-	System.out.println("\n\n");
-	QueenBoard seven=new QueenBoard(7);
-	seven.solve();
-        seven.countSolutions();
-	System.out.println(seven.getCount());
-	System.out.println("\n\n");
-	QueenBoard eight=new QueenBoard(8);
-	eight.solve();
-        eight.countSolutions();
-	System.out.println(eight.getCount());
-	System.out.println("\n\n");
-	QueenBoard nine=new QueenBoard(9);
-	nine.solve();
-        nine.countSolutions();
-	System.out.println(nine.getCount());
-	System.out.println("\n\n");
-	QueenBoard ten=new QueenBoard(10);
-	ten.solve();
-        ten.countSolutions();
-	System.out.println(ten.getCount());
-	System.out.println("\n\n");
-	System.out.println(one.getCount());
-	System.out.println(two.getCount());
-	System.out.println(three.getCount());
-	System.out.println(four.getCount());
-	System.out.println(five.getCount());
-	System.out.println(six.getCount());
-	System.out.println(seven.getCount());
-	System.out.println(eight.getCount());
-	System.out.println(nine.getCount());
-	System.out.println(ten.getCount());
+	// System.out.println(one.getCount());
+	// System.out.println(two.getCount());
+	// System.out.println(three.getCount());
+	// System.out.println(four.getCount());
+	// System.out.println(five.getCount());
+	// System.out.println(six.getCount());
+	// System.out.println(seven.getCount());
+	// System.out.println(eight.getCount());
+	// System.out.println(nine.getCount());
+	//System.out.println(ten.getCount());
     }
 }
