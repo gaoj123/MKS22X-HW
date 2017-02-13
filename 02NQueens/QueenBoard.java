@@ -73,37 +73,30 @@ public class QueenBoard{
 		addQueen(r,col);
 		if(col+1>board.length-1){
 		    if(queensPlaced()==board.length){
-			//System.out.println(r);
 			oneAtLeast=true;
 		    }
 		    //solutionCount+=1;
 		    return true;
 		}
 		else{
-		    //System.out.println(col+1);
 		    return solveH(col+1);
 		}
 	    }
 	    else if(board[r][col]>=1){
 		if(r==board.length-1){
 		    if(col==0){
-			//System.out.println("a");
 			return false;
 		    }
 		    else{
-			//System.out.println("go back");
 			return solveH(col-1);
 		    }
 		}
 		else{
-		    //System.out.println("down");
 		    r+=1;
 		}
 	    }
 	    else if(board[r][col]==-1){
-		//System.out.println("entered");
 		if(r==board.length-1){
-		    //System.out.println("b");
 		    if(col!=0){
 			removeQueen(r,col);
 			return solveH(col-1);
@@ -118,7 +111,6 @@ public class QueenBoard{
 		}
 	    }
 	}
-	//System.out.println("end");
 	return false;
     }
     public void addQueen(int row, int c){
