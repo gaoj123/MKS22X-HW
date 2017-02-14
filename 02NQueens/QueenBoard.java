@@ -216,16 +216,16 @@ public class QueenBoard{
 	}
     }
     public static void main(String[] args){
-	QueenBoard one=new QueenBoard(1);
-	QueenBoard two=new QueenBoard(2);
-	QueenBoard three=new QueenBoard(3);
-	QueenBoard four=new QueenBoard(4);
-	QueenBoard five=new QueenBoard(5);
-	QueenBoard six=new QueenBoard(6);
-	QueenBoard seven=new QueenBoard(7);
-	QueenBoard eight=new QueenBoard(8);
-	QueenBoard nine=new QueenBoard(9);
-	QueenBoard ten=new QueenBoard(10);
+	// QueenBoard one=new QueenBoard(1);
+	// QueenBoard two=new QueenBoard(2);
+	// QueenBoard three=new QueenBoard(3);
+	// QueenBoard four=new QueenBoard(4);
+	// QueenBoard five=new QueenBoard(5);
+	// QueenBoard six=new QueenBoard(6);
+	// QueenBoard seven=new QueenBoard(7);
+	// QueenBoard eight=new QueenBoard(8);
+	// QueenBoard nine=new QueenBoard(9);
+	// QueenBoard ten=new QueenBoard(10);
 	
 	//-----------------------------------------
 	//Test Cases for Count
