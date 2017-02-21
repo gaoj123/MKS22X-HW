@@ -21,13 +21,8 @@ public class KnightBoard{
     }
     public void solve(){
 	solveH(0,0,1);
-	// for(int i=0;i<board.length;i++){
-	//     for(int j=0;j<board[0].length;j++){
-	// 	solveH(i,j,1);
-	//     }
-	// }
     }
-    public boolean solveH(int row,int col,int level){
+    private boolean solveH(int row,int col,int level){
 	if(level>board.length*board.length){
 	    return true;
 	}
