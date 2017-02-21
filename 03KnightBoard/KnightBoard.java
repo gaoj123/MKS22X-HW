@@ -11,13 +11,13 @@ public class KnightBoard{
 	}
     }
     public boolean isOnGoodSpot(int r,int c){
-	return (r<board.length&&r>=0)&&(c<board[0].length&&c>=0);
-	// if((r<board.length&&r>=0)&&(c<board[0].length&&c>=0)){
-	//     return board[r][c]==0;
-	// }
-	// else{
-	//     return false;
-	// }
+	//return (r<board.length&&r>=0)&&(c<board[0].length&&c>=0);
+	if((r<board.length&&r>=0)&&(c<board[0].length&&c>=0)){
+	    return board[r][c]==0;
+	}
+	else{
+	    return false;
+	}
     }
     public void solve(){
 	solveH(0,0,1);
@@ -28,10 +28,7 @@ public class KnightBoard{
 	// }
     }
     public boolean solveH(int row,int col,int level){
-	if(board[row][col]!=0){
-	    return false;
-	}
-	if(level>row*col){
+	if(level>board.length*board.length){
 	    return true;
 	}
 	else{
@@ -45,7 +42,9 @@ public class KnightBoard{
 		board[row][col]=0;
 		return false;
 	    }
-	    return false;
+	    else{
+		return false;
+	    }
 	}
     }
     public String toString(){
@@ -64,7 +63,7 @@ public class KnightBoard{
 	return toRet;
     }
     public static void main(String[] args){
-	KnightBoard test=new KnightBoard(6,6);
+	KnightBoard test=new KnightBoard(7,7);
 	test.solve();
 	System.out.println(test);
     }
