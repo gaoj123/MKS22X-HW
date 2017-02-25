@@ -23,7 +23,7 @@ public class KnightBoard{
 	solveH(0,0,1);
     }
     private boolean solveH(int row,int col,int level){
-	if(level>board.length*board.length){
+	if(level>board.length*board[0].length){
 	    return true;
 	}
 	else{
@@ -58,7 +58,7 @@ public class KnightBoard{
 	return toRet;
     }
     public static void main(String[] args){
-	KnightBoard test=new KnightBoard(7,7);
+	KnightBoard test=new KnightBoard(7,5);
 	test.solve();
 	System.out.println(test);
     }
