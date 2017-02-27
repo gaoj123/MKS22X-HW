@@ -115,11 +115,11 @@ public class KnightBoard{
 	return toRet;
     }
     public static void main(String[] args){
-	KnightBoard test=new KnightBoard(16,16);
-	test.solveFast();
-	System.out.println(test);
-	KnightBoard test2=new KnightBoard(7,7);
-	test2.solve();
-	System.out.println(test2);
+	// KnightBoard test=new KnightBoard(16,16);
+	// test.solveFast();
+	// System.out.println(test);
+	// KnightBoard test2=new KnightBoard(7,7);
+	// test2.solve();
+	// System.out.println(test2);
     }
 }
