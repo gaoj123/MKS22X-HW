@@ -6,6 +6,9 @@ public class Recursion{
 	if(n<0){
 	    throw new IllegalArgumentException();
 	}
+	else if(n-0<=0.00000000001){
+	    return 0;
+	}
 	else{
 	    return helper(n,1);
 	}
