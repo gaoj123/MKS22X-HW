@@ -190,7 +190,6 @@ public class QueenBoard{
      *all others are displayed as underscores '_'
      */
     public String toString(){
-	//Note: If there are no solutions, board prints the line "No solution ... "
 	if(solved){
 	    if(oneAtLeast){
 		String retString="";
@@ -208,7 +207,7 @@ public class QueenBoard{
 		return retString;
 	    }
 	    else{
-		return "No solution when board size is: "+getSize();
+		return "";
 	    }
 	}
 	else{
@@ -217,10 +216,10 @@ public class QueenBoard{
     }
     public static void main(String[] args){
 	// QueenBoard one=new QueenBoard(1);
-	// QueenBoard two=new QueenBoard(2);
+	//QueenBoard two=new QueenBoard(2);
 	// QueenBoard three=new QueenBoard(3);
 	// QueenBoard four=new QueenBoard(4);
-	// QueenBoard five=new QueenBoard(5);
+	//QueenBoard five=new QueenBoard(5);
 	// QueenBoard six=new QueenBoard(6);
 	// QueenBoard seven=new QueenBoard(7);
 	// QueenBoard eight=new QueenBoard(8);
@@ -233,8 +232,8 @@ public class QueenBoard{
 	// one.countSolutions();
 	// System.out.println(one.getCount());
 
-	// two.countSolutions();
-	// System.out.println(two.getCount());
+	//two.countSolutions();
+	//System.out.println(two.getCount());
 
 	// three.countSolutions();
 	// System.out.println(three.getCount());
@@ -266,14 +265,14 @@ public class QueenBoard{
 	//Test Cases for Printing Board
 	// one.solve();
 	// System.out.println(one);
-	// two.solve();
-	// System.out.println(two);
+	//two.solve();
+	//System.out.println(two);
 	// three.solve();
 	// System.out.println(three);
 	// four.solve();
 	// System.out.println(four);
-	// five.solve();
-	// System.out.println(five);
+	//five.solve();
+	//System.out.println(five);
 	// six.solve();
 	// System.out.println(six);
 	// seven.solve();
