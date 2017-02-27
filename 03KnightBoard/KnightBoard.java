@@ -58,8 +58,8 @@ public class KnightBoard{
 	return toRet;
     }
     public static void main(String[] args){
-	KnightBoard test=new KnightBoard(7,5);
-	test.solve();
-	System.out.println(test);
+	// KnightBoard test=new KnightBoard(7,5);
+	// test.solve();
+	// System.out.println(test);
     }
 }
