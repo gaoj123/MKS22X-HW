@@ -21,6 +21,14 @@ public class Maze{
     */
 
     public Maze(String filename){
+	File infile=new File(filename);
+	Scanner inf=new Scanner(text);
+	int lineNumber = 1;
+        while(inf.hasNextLine()){
+            String line = inf.nextLine();
+            //System.out.println(line);
+        }
+	animate=false;
         //COMPLETE CONSTRUCTOR
     }
 
@@ -45,12 +53,12 @@ public class Maze{
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
     */
     public boolean solve(){
-            int startx=0,starty=0;
+            int startr=-1,startc=-1;
 
-            //Initialize startx and starty with the location of the S. 
+            //Initialize starting row and startint col with the location of the S. 
 
-            maze[startx][starty] = ' ';//erase the S, and start solving!
-            return solve(startx,starty);
+            maze[startr][startc] = ' ';//erase the S, and start solving!
+            return solve(startr,startc);
     }
 
     /*
@@ -69,7 +77,7 @@ public class Maze{
         All visited spots that were not part of the solution are changed to '.'
         All visited spots that are part of the solution are changed to '@'
     */
-    private boolean solve(int x, int y){
+    private boolean solve(int row, int col){
         if(animate){
             System.out.println("\033[2J\033[1;1H"+this);
 
