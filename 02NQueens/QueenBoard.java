@@ -1,4 +1,7 @@
 public class QueenBoard{
+    public static String name(){
+	return "Gao,Jenny";
+    }
     private int[][]board;
     private int solutionCount;
     private boolean solved;
