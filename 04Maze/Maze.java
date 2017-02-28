@@ -31,7 +31,13 @@ public class Maze{
 	animate=false;
         //COMPLETE CONSTRUCTOR
     }
-
+    private void wait(int millis){ //ADDED SORRY!
+       try {
+	   Thread.sleep(millis);
+       }
+       catch (InterruptedException e) {
+       }
+   }
     public void setAnimate(boolean b){
 
         animate = b;
