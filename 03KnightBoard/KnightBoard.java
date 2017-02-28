@@ -1,4 +1,7 @@
 public class KnightBoard{
+    public static String name(){
+	return "Gao,Jenny";
+    }
     private int[][] board;
     private int[] x={1,1,-1,-1,2,2,-2,-2};
     private int [] y={2,-2,2,-2,1,-1,-1,1};
