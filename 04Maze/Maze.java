@@ -2,8 +2,9 @@ import java.util.*;
 import java.io.*;
 
 public class Maze{
-
-
+    public static String name(){
+	return "Gao,Jenny";
+    }
     private char[][]maze;
     private boolean animate;
 
