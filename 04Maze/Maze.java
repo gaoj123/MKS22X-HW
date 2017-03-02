@@ -7,6 +7,8 @@ public class Maze{
     }
     private char[][]maze;
     private boolean animate;
+    private int startR;
+    private int startC;
 
     /*Constructor loads a maze text file, and sets animate to false by default.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
@@ -22,14 +24,51 @@ public class Maze{
     */
 
     public Maze(String filename){
-	File infile=new File(filename);
-	Scanner inf=new Scanner(text);
-	int lineNumber = 1;
-        while(inf.hasNextLine()){
-            String line = inf.nextLine();
-            //System.out.println(line);
-        }
+	try{
+	    File infile=new File(filename);
+	    Scanner lineNum=new Scanner(infile);
+	    int lineNumb=0;
+	    int lineLen=0;
+	    while(lineNum.hasNextLine()){
+		String line=lineNum.nextLine();
+		System.out.println(line);
+		lineLen=line.length();
+		lineNumb+=1;
+	    }
+	    System.out.println(lineLen);
+	    System.out.println(lineNumb);
+	    maze =new char[lineNumb][lineLen];
+	    int onLineNumber=0;
+	    Scanner inf=new Scanner(infile);
+	    while(inf.hasNextLine()){
+		String line = inf.nextLine();
+		for(int i=0;i<line.length();i++){
+		    if(line.substring(i,i+1)=="S"){
+			startC=i;
+			startR=onLineNumber;
+		    }
+		    maze[onLineNumber][i]=line.charAt(0);
+		}
+		onLineNumber+=1; 
+		//System.out.println(line);
+	    }	
+	}
+	catch (FileNotFoundException e) {
+	    System.out.println("File not found!");
+	}
+	// Scanner inf=new Scanner(infile);
+	// int lineNumber = -1;
+        // while(inf.hasNextLine()){
+	//     lineNumber+=1;
+        //     String line = inf.nextLine();
+	//     for(int i=0;i<line.length();i++){
+	// 	maze[lineNumber][i]=line.charAt(0);
+	//     }
+        //     //System.out.println(line);
+        // }
 	animate=false;
+	System.out.println(startR);
+	System.out.println(startC);
         //COMPLETE CONSTRUCTOR
     }
     private void wait(int millis){ //ADDED SORRY!
