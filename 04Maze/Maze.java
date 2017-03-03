@@ -31,19 +31,19 @@ public class Maze{
 	    int lineLen=0;
 	    while(lineNum.hasNextLine()){
 		String line=lineNum.nextLine();
-		System.out.println(line);
+		//System.out.println(line);
 		lineLen=line.length();
 		lineNumb+=1;
 	    }
-	    System.out.println(lineLen);
-	    System.out.println(lineNumb);
+	    //System.out.println(lineLen);
+	    // System.out.println(lineNumb);
 	    maze =new char[lineNumb][lineLen];
 	    int onLineNumber=0;
 	    Scanner inf=new Scanner(infile);
 	    while(inf.hasNextLine()){
 		String line = inf.nextLine();
 		for(int i=0;i<line.length();i++){
-		    if(line.substring(i,i+1)=="S"){
+		    if(line.substring(i,i+1).equals("S")){
 			startC=i;
 			startR=onLineNumber;
 		    }
@@ -67,8 +67,8 @@ public class Maze{
         //     //System.out.println(line);
         // }
 	animate=false;
-	System.out.println(startR);
-	System.out.println(startC);
+	//System.out.println(startR);
+	//System.out.println(startC);
         //COMPLETE CONSTRUCTOR
     }
     private void wait(int millis){ //ADDED SORRY!
@@ -100,7 +100,8 @@ public class Maze{
     */
     public boolean solve(){
             int startr=-1,startc=-1;
-
+	    startr=startR;
+	    startc=startC;
             //Initialize starting row and startint col with the location of the S. 
 
             maze[startr][startc] = ' ';//erase the S, and start solving!
@@ -126,14 +127,82 @@ public class Maze{
     private boolean solve(int row, int col){
         if(animate){
             System.out.println("\033[2J\033[1;1H"+this);
-
             wait(20);
         }
-
+	if(maze[row][col]=='E'){
+	    System.out.println("solved");
+	    return true;
+	}
+	if(maze[row][col]=='@'){
+	    maze[row][col]='.';
+	}
+	if(notDeadEnd(row,col)){
+	    maze[row][col]='@';
+	    if(solve(row,col+1)){
+		return true;
+	    }
+	    if(solve(row+1,col)){
+		return true;
+	    }
+	    if(solve(row,col-1)){
+		return true;
+	    }
+	    if(solve(row-1,col)){	
+		return true;
+	    }
+	    // maze[row][col]=".";
+	    // return false;
+	}
+	else{
+	    String sideFree=sideOpen(row,col);
+	    if(sideFree.equals("right")){
+	        return solve(row,col+1);
+	    }
+	    if(sideFree.equals("left")){
+		return solve(row,col-1);
+	    }
+	    if(sideFree.equals("up")){
+		return solve(row-1,col);
+	    }
+	    if(sideFree.equals("down")){
+		return solve(row+1,col);
+	    }
+	}
         //COMPLETE SOLVE
 
         return false; //so it compiles
     }
-
-
+    public String sideOpen(int r,int c){
+	if(maze[r][c+1]==' '||maze[r][c+1]=='@'){
+	    return "right";
+	}
+	else if(maze[r][c-1]==' '||maze[r][c-1]=='@'){
+	    return "left";
+	}
+	else if(maze[r+1][c]==' '||maze[r+1][c]=='@'){
+	    return "down";
+	}
+	else{
+	    return "up";
+	}
+    }
+    public boolean notDeadEnd(int r, int c){
+	int sidesBlocked=0;
+	if(maze[r][c+1]=='#'||maze[r][c+1]=='@'){
+	    sidesBlocked+=1;
+	}
+	if(maze[r][c-1]=='#'||maze[r][c-1]=='@'){
+	    sidesBlocked+=1;
+	}
+	if(maze[r+1][c]=='#'||maze[r+1][c]=='@'){
+	    sidesBlocked+=1;
+	}
+	if(maze[r-1][c]=='#'||maze[r-1][c]=='@'){
+	    sidesBlocked+=1;
+	}
+	if(sidesBlocked>=3){
+	    return false;
+	}
+	return true;
+    }
 }
