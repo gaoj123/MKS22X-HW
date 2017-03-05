@@ -9,6 +9,7 @@ public class Maze{
     private boolean animate;
     private int startR;
     private int startC;
+    private boolean notDead;
 
     /*Constructor loads a maze text file, and sets animate to false by default.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
@@ -47,7 +48,8 @@ public class Maze{
 			startC=i;
 			startR=onLineNumber;
 		    }
-		    maze[onLineNumber][i]=line.charAt(0);
+		    maze[onLineNumber][i]=line.charAt(i);
+		    // System.out.print(maze[onLineNumber][i]);
 		}
 		onLineNumber+=1; 
 		//System.out.println(line);
@@ -125,84 +127,220 @@ public class Maze{
         All visited spots that are part of the solution are changed to '@'
     */
     private boolean solve(int row, int col){
-        if(animate){
+    	if(animate){
             System.out.println("\033[2J\033[1;1H"+this);
-            wait(20);
+            wait(100);
         }
-	if(maze[row][col]=='E'){
-	    System.out.println("solved");
+    	if(maze[row][col]=='E'){
+    	    return true;
+    	}
+    	if(maze[row][col]=='#'||maze[row][col]=='.'){
+    	    return false;
+    	}
+    	else if(maze[row][col]==' '){
+    	    maze[row][col]='@';
+    	    if(solve(row,col+1)){
+    		return true;
+    	    }
+    	    if(solve(row+1,col)){
+    		return true;
+    	    }
+    	    if(solve(row,col-1)){
+    		return true;
+    	    }
+    	    if(solve(row-1,col)){
+    		return true;
+    	    }
+    	    maze[row][col]='.';
+    	    return false;
+    	}
+    	return false;
+	    
+    }
+    // private boolean solve(int row, int col){
+    //     if(animate){
+    //         System.out.println("\033[2J\033[1;1H"+this);
+    //         wait(100);
+    //     }
+    // 	if(maze[row][col]=='E'){
+    // 	    //maze[row][col]='@';
+    // 	    System.out.println("solved");
+    // 	    return true;
+    // 	}
+    // 	// if(maze[row][col]=='@'){
+    // 	//     maze[row][col]='.';
+    // 	// }
+    // 	if(maze[row][col]=='#'||maze[row][col]=='.'||(notDead&&maze[row][col]=='@')){
+    // 	    if(notDead){
+    // 		notDead=false;
+    // 	    }
+    // 	    return false;
+    // 	}
+    // 	// if(allFourClosed(row,col)){
+    // 	//     return false;
+    // 	// }
+    // 	if(isOnBoard(row,col)){
+    // 	    if(notDeadEnd(row,col)){
+    // 		maze[row][col]='@';
+    // 		notDead=true;
+    // 		// if(maze[row][col]=='@'){
+    // 		//     maze[row][col]='.';
+    // 		// }
+    // 		// else{
+    // 		//     maze[row][col]='@';
+    // 		// }
+    // 		if(solve(row,col+1)){
+    // 		    return true;
+    // 		}
+    // 		if(solve(row+1,col)){
+    // 		    return true;
+    // 		}
+    // 		if(solve(row,col-1)){
+    // 		    return true;
+    // 		}
+    // 		if(solve(row-1,col)){
+    // 		    return true;
+    // 		}
+    // 		// maze[row][col]='.';
+    // 		//  return false;
+    // 	    }
+    // 	    else{
+    // 		// if(allFourClosed(row,col)){
+    // 		//     maze[row][col]='.';
+    // 		// }
+    // 		// if(maze[row][col]=='@'){
+    // 		//     maze[row][col]='.';
+    // 		// }
+    // 		maze[row][col]='@';
+    // 		String sideFree=sideOpen(row,col);
+    // 		if(sideFree.equals("right")){
+    // 		    return solve(row,col+1);
+    // 		}
+    // 		if(sideFree.equals("left")){
+    // 		    return solve(row,col-1);
+    // 		}
+    // 		if(sideFree.equals("up")){
+    // 		    return solve(row-1,col);
+    // 		}
+    // 		if(sideFree.equals("down")){
+    // 		    return solve(row+1,col);
+    // 		}
+    // 		// maze[row][col]='.';
+    // 	        // return false;
+    // 	    }
+    // 	    //COMPLETE SOLVE
+
+    // 	    return false; //so it compiles
+    // 	}
+    // 	return false;
+    // }
+    public boolean isOnBoard(int r,int c){
+	return ((r>=0&&r<maze.length)&&(c>=0&&c<maze[0].length));
+    }
+    public boolean allFourClosed(int r, int c){
+	int sidesBlocked=0;
+	if(isOnBoard(r,c+1)){
+	    if(maze[r][c+1]=='#'||maze[r][c+1]=='@'||maze[r][c+1]=='.'){
+		sidesBlocked+=1;
+	    }
+	}
+	if(isOnBoard(r,c-1)){
+	    if(maze[r][c-1]=='#'||maze[r][c-1]=='@'||maze[r][c-1]=='.'){
+		sidesBlocked+=1;
+	    }
+	}
+	if(isOnBoard(r+1,c)){
+	    if(maze[r+1][c]=='#'||maze[r+1][c]=='@'||maze[r+1][c]=='.'){
+		sidesBlocked+=1;
+	    }
+	}
+	if(isOnBoard(r-1,c)){
+	    if(maze[r-1][c]=='#'||maze[r-1][c]=='@'||maze[r-1][c]=='.'){
+		sidesBlocked+=1;
+	    }
+	}
+	if(sidesBlocked==4){
 	    return true;
 	}
-	if(maze[row][col]=='@'){
-	    maze[row][col]='.';
-	}
-	if(notDeadEnd(row,col)){
-	    maze[row][col]='@';
-	    if(solve(row,col+1)){
-		return true;
-	    }
-	    if(solve(row+1,col)){
-		return true;
-	    }
-	    if(solve(row,col-1)){
-		return true;
-	    }
-	    if(solve(row-1,col)){	
-		return true;
-	    }
-	    // maze[row][col]=".";
-	    // return false;
-	}
-	else{
-	    String sideFree=sideOpen(row,col);
-	    if(sideFree.equals("right")){
-	        return solve(row,col+1);
-	    }
-	    if(sideFree.equals("left")){
-		return solve(row,col-1);
-	    }
-	    if(sideFree.equals("up")){
-		return solve(row-1,col);
-	    }
-	    if(sideFree.equals("down")){
-		return solve(row+1,col);
-	    }
-	}
-        //COMPLETE SOLVE
-
-        return false; //so it compiles
+	return false;
     }
     public String sideOpen(int r,int c){
-	if(maze[r][c+1]==' '||maze[r][c+1]=='@'){
-	    return "right";
+	if(isOnBoard(r,c+1)){
+	    if(maze[r][c+1]==' '||maze[r][c+1]=='E'){
+		return "right";
+	    }
 	}
-	else if(maze[r][c-1]==' '||maze[r][c-1]=='@'){
-	    return "left";
+	if(isOnBoard(r,c-1)){
+	    if(maze[r][c-1]==' '||maze[r][c-1]=='E'){
+		return "left";
+	    }
 	}
-	else if(maze[r+1][c]==' '||maze[r+1][c]=='@'){
-	    return "down";
+	if(isOnBoard(r+1,c)){
+	    if(maze[r+1][c]==' '||maze[r+1][c]=='E'){
+		return "down";
+	    }
 	}
-	else{
-	    return "up";
+	if(isOnBoard(r-1,c)){
+	    if(maze[r-1][c]==' '||maze[r-1][c]=='E'){
+		return "up";
+	    }
 	}
+	if(isOnBoard(r,c+1)){
+	    if(maze[r][c+1]=='@'){
+		maze[r][c]='.';
+		return "right";
+	    }
+	}
+	if(isOnBoard(r,c-1)){
+	    if(maze[r][c-1]=='@'){
+		maze[r][c]='.';
+		return "left";
+	    }
+	}
+	if(isOnBoard(r+1,c)){
+	    if(maze[r+1][c]=='@'){
+		maze[r][c]='.';
+		return "down";
+	    }
+	}
+	maze[r][c]='.';
+	return "up";
     }
     public boolean notDeadEnd(int r, int c){
 	int sidesBlocked=0;
-	if(maze[r][c+1]=='#'||maze[r][c+1]=='@'){
-	    sidesBlocked+=1;
+	if(isOnBoard(r,c+1)){
+	    if(maze[r][c+1]=='#'||maze[r][c+1]=='@'||maze[r][c+1]=='.'){
+		sidesBlocked+=1;
+	    }
 	}
-	if(maze[r][c-1]=='#'||maze[r][c-1]=='@'){
-	    sidesBlocked+=1;
+	if(isOnBoard(r,c-1)){
+	    if(maze[r][c-1]=='#'||maze[r][c-1]=='@'||maze[r][c-1]=='.'){
+		sidesBlocked+=1;
+	    }
 	}
-	if(maze[r+1][c]=='#'||maze[r+1][c]=='@'){
-	    sidesBlocked+=1;
+	if(isOnBoard(r+1,c)){
+	    if(maze[r+1][c]=='#'||maze[r+1][c]=='@'||maze[r+1][c]=='.'){
+		sidesBlocked+=1;
+	    }
 	}
-	if(maze[r-1][c]=='#'||maze[r-1][c]=='@'){
-	    sidesBlocked+=1;
+	if(isOnBoard(r-1,c)){
+	    if(maze[r-1][c]=='#'||maze[r-1][c]=='@'||maze[r-1][c]=='.'){
+		sidesBlocked+=1;
+	    }
 	}
 	if(sidesBlocked>=3){
 	    return false;
 	}
 	return true;
+    }
+    public String toString(){
+	String retString="";
+	for(int i=0;i<maze.length;i++){
+	    for(int j=0;j<maze[0].length;j++){
+		retString+=maze[i][j];
+	    }
+	    retString+="\n";
+	}
+	return retString;
     }
 }
