@@ -9,7 +9,8 @@ public class Maze{
     private boolean animate;
     private int startR;
     private int startC;
-    private boolean notDead;
+    private boolean noS;
+    private boolean noE;
 
     /*Constructor loads a maze text file, and sets animate to false by default.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
@@ -25,6 +26,8 @@ public class Maze{
     */
 
     public Maze(String filename){
+	noE=true;
+	noS=true;
 	try{
 	    File infile=new File(filename);
 	    Scanner lineNum=new Scanner(infile);
@@ -32,45 +35,41 @@ public class Maze{
 	    int lineLen=0;
 	    while(lineNum.hasNextLine()){
 		String line=lineNum.nextLine();
-		//System.out.println(line);
 		lineLen=line.length();
 		lineNumb+=1;
 	    }
-	    //System.out.println(lineLen);
-	    // System.out.println(lineNumb);
 	    maze =new char[lineNumb][lineLen];
 	    int onLineNumber=0;
 	    Scanner inf=new Scanner(infile);
 	    while(inf.hasNextLine()){
 		String line = inf.nextLine();
 		for(int i=0;i<line.length();i++){
+		    if(line.substring(i,i+1).equals("E")){
+			noE=false;
+		    }
 		    if(line.substring(i,i+1).equals("S")){
+			noS=false;
 			startC=i;
 			startR=onLineNumber;
 		    }
 		    maze[onLineNumber][i]=line.charAt(i);
-		    // System.out.print(maze[onLineNumber][i]);
 		}
 		onLineNumber+=1; 
-		//System.out.println(line);
 	    }	
 	}
 	catch (FileNotFoundException e) {
 	    System.out.println("File not found!");
+	    System.exit(0);
 	}
-	// Scanner inf=new Scanner(infile);
-	// int lineNumber = -1;
-        // while(inf.hasNextLine()){
-	//     lineNumber+=1;
-        //     String line = inf.nextLine();
-	//     for(int i=0;i<line.length();i++){
-	// 	maze[lineNumber][i]=line.charAt(0);
-	//     }
-        //     //System.out.println(line);
-        // }
 	animate=false;
-	//System.out.println(startR);
-	//System.out.println(startC);
+	if(noE){
+	    System.out.println("There is no 'E' in the maze");
+	    System.exit(0);
+	}
+	if(noS){
+	    System.out.println("There is no 'S' in the maze");
+	    System.exit(0);
+	} 
         //COMPLETE CONSTRUCTOR
     }
     private void wait(int millis){ //ADDED SORRY!
@@ -107,7 +106,13 @@ public class Maze{
             //Initialize starting row and startint col with the location of the S. 
 
             maze[startr][startc] = ' ';//erase the S, and start solving!
-            return solve(startr,startc);
+            if(!solve(startr,startc)){
+		System.out.println("No Solution\n");
+		return false;
+	    }
+	    else{
+		return true;
+	    }
     }
 
     /*
@@ -129,7 +134,7 @@ public class Maze{
     private boolean solve(int row, int col){
     	if(animate){
             System.out.println("\033[2J\033[1;1H"+this);
-            wait(100);
+            wait(20);
         }
     	if(maze[row][col]=='E'){
     	    return true;
@@ -156,182 +161,6 @@ public class Maze{
     	}
     	return false;
 	    
-    }
-    // private boolean solve(int row, int col){
-    //     if(animate){
-    //         System.out.println("\033[2J\033[1;1H"+this);
-    //         wait(100);
-    //     }
-    // 	if(maze[row][col]=='E'){
-    // 	    //maze[row][col]='@';
-    // 	    System.out.println("solved");
-    // 	    return true;
-    // 	}
-    // 	// if(maze[row][col]=='@'){
-    // 	//     maze[row][col]='.';
-    // 	// }
-    // 	if(maze[row][col]=='#'||maze[row][col]=='.'||(notDead&&maze[row][col]=='@')){
-    // 	    if(notDead){
-    // 		notDead=false;
-    // 	    }
-    // 	    return false;
-    // 	}
-    // 	// if(allFourClosed(row,col)){
-    // 	//     return false;
-    // 	// }
-    // 	if(isOnBoard(row,col)){
-    // 	    if(notDeadEnd(row,col)){
-    // 		maze[row][col]='@';
-    // 		notDead=true;
-    // 		// if(maze[row][col]=='@'){
-    // 		//     maze[row][col]='.';
-    // 		// }
-    // 		// else{
-    // 		//     maze[row][col]='@';
-    // 		// }
-    // 		if(solve(row,col+1)){
-    // 		    return true;
-    // 		}
-    // 		if(solve(row+1,col)){
-    // 		    return true;
-    // 		}
-    // 		if(solve(row,col-1)){
-    // 		    return true;
-    // 		}
-    // 		if(solve(row-1,col)){
-    // 		    return true;
-    // 		}
-    // 		// maze[row][col]='.';
-    // 		//  return false;
-    // 	    }
-    // 	    else{
-    // 		// if(allFourClosed(row,col)){
-    // 		//     maze[row][col]='.';
-    // 		// }
-    // 		// if(maze[row][col]=='@'){
-    // 		//     maze[row][col]='.';
-    // 		// }
-    // 		maze[row][col]='@';
-    // 		String sideFree=sideOpen(row,col);
-    // 		if(sideFree.equals("right")){
-    // 		    return solve(row,col+1);
-    // 		}
-    // 		if(sideFree.equals("left")){
-    // 		    return solve(row,col-1);
-    // 		}
-    // 		if(sideFree.equals("up")){
-    // 		    return solve(row-1,col);
-    // 		}
-    // 		if(sideFree.equals("down")){
-    // 		    return solve(row+1,col);
-    // 		}
-    // 		// maze[row][col]='.';
-    // 	        // return false;
-    // 	    }
-    // 	    //COMPLETE SOLVE
-
-    // 	    return false; //so it compiles
-    // 	}
-    // 	return false;
-    // }
-    public boolean isOnBoard(int r,int c){
-	return ((r>=0&&r<maze.length)&&(c>=0&&c<maze[0].length));
-    }
-    public boolean allFourClosed(int r, int c){
-	int sidesBlocked=0;
-	if(isOnBoard(r,c+1)){
-	    if(maze[r][c+1]=='#'||maze[r][c+1]=='@'||maze[r][c+1]=='.'){
-		sidesBlocked+=1;
-	    }
-	}
-	if(isOnBoard(r,c-1)){
-	    if(maze[r][c-1]=='#'||maze[r][c-1]=='@'||maze[r][c-1]=='.'){
-		sidesBlocked+=1;
-	    }
-	}
-	if(isOnBoard(r+1,c)){
-	    if(maze[r+1][c]=='#'||maze[r+1][c]=='@'||maze[r+1][c]=='.'){
-		sidesBlocked+=1;
-	    }
-	}
-	if(isOnBoard(r-1,c)){
-	    if(maze[r-1][c]=='#'||maze[r-1][c]=='@'||maze[r-1][c]=='.'){
-		sidesBlocked+=1;
-	    }
-	}
-	if(sidesBlocked==4){
-	    return true;
-	}
-	return false;
-    }
-    public String sideOpen(int r,int c){
-	if(isOnBoard(r,c+1)){
-	    if(maze[r][c+1]==' '||maze[r][c+1]=='E'){
-		return "right";
-	    }
-	}
-	if(isOnBoard(r,c-1)){
-	    if(maze[r][c-1]==' '||maze[r][c-1]=='E'){
-		return "left";
-	    }
-	}
-	if(isOnBoard(r+1,c)){
-	    if(maze[r+1][c]==' '||maze[r+1][c]=='E'){
-		return "down";
-	    }
-	}
-	if(isOnBoard(r-1,c)){
-	    if(maze[r-1][c]==' '||maze[r-1][c]=='E'){
-		return "up";
-	    }
-	}
-	if(isOnBoard(r,c+1)){
-	    if(maze[r][c+1]=='@'){
-		maze[r][c]='.';
-		return "right";
-	    }
-	}
-	if(isOnBoard(r,c-1)){
-	    if(maze[r][c-1]=='@'){
-		maze[r][c]='.';
-		return "left";
-	    }
-	}
-	if(isOnBoard(r+1,c)){
-	    if(maze[r+1][c]=='@'){
-		maze[r][c]='.';
-		return "down";
-	    }
-	}
-	maze[r][c]='.';
-	return "up";
-    }
-    public boolean notDeadEnd(int r, int c){
-	int sidesBlocked=0;
-	if(isOnBoard(r,c+1)){
-	    if(maze[r][c+1]=='#'||maze[r][c+1]=='@'||maze[r][c+1]=='.'){
-		sidesBlocked+=1;
-	    }
-	}
-	if(isOnBoard(r,c-1)){
-	    if(maze[r][c-1]=='#'||maze[r][c-1]=='@'||maze[r][c-1]=='.'){
-		sidesBlocked+=1;
-	    }
-	}
-	if(isOnBoard(r+1,c)){
-	    if(maze[r+1][c]=='#'||maze[r+1][c]=='@'||maze[r+1][c]=='.'){
-		sidesBlocked+=1;
-	    }
-	}
-	if(isOnBoard(r-1,c)){
-	    if(maze[r-1][c]=='#'||maze[r-1][c]=='@'||maze[r-1][c]=='.'){
-		sidesBlocked+=1;
-	    }
-	}
-	if(sidesBlocked>=3){
-	    return false;
-	}
-	return true;
     }
     public String toString(){
 	String retString="";
