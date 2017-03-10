@@ -2,6 +2,9 @@ import java.util.*;
 import java.io.*;
 
 public class USACO{
+    public static String name(){
+	return "Gao,Jenny";
+    }
     //Partner: William Hong
     
     public USACO(){}
@@ -75,14 +78,16 @@ public class USACO{
 	}
 
     }
-	//testing
-	public static void main(String[]args){
-		// USACO x = new USACO();
-		// System.out.println(x.bronze("infile2.txt"));
-		// System.out.println(x.bronze("infile3.txt"));
-		// System.out.println(x.bronze("infile4.txt"));
-		// System.out.println(x.bronze("infile5.txt"));
-		// System.out.println(x.bronze("infile10.txt"));
-	}
+    public static int silver(String filename){
+    }
+    //testing
+    public static void main(String[]args){
+	// USACO x = new USACO();
+	// System.out.println(x.bronze("infile2.txt"));
+	// System.out.println(x.bronze("infile3.txt"));
+	// System.out.println(x.bronze("infile4.txt"));
+	// System.out.println(x.bronze("infile5.txt"));
+	// System.out.println(x.bronze("infile10.txt"));
+    }
 	
 }
