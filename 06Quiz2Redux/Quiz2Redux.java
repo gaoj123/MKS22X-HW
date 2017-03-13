@@ -1,5 +1,8 @@
 import java.util.*;
-public class Quiz2Redux{  
+public class Quiz2Redux{
+    public static String name(){
+	return "Gao,Jenny";
+    }
   /*Returns an ArrayList<String> that contains all subsets of the
    *characters of String s. Assume s has no duplicate characters.
    *the characters should appear in the same order that they occur 
