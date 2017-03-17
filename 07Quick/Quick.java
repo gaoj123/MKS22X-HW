@@ -12,14 +12,17 @@ public class Quick{
 	}
 	else{
 	    if(k-1>index){
-		return helper(data,k,index,end);
+		return helper(data,k,index+1,end);
 	    }
 	    else{
-		return helper(data,k,start,index);
+		return helper(data,k,start,index-1);
 	    }
 	}
     }
     public static int part(int[] data, int start, int end){
+	// if(start==end){
+	//     return data[start];
+	// }
 	int pivot=start+(int)(Math.random() * (end-start+1));
 	int divider=data[pivot];
 	int[] newData=new int[data.length];
@@ -34,7 +37,7 @@ public class Quick{
 	    newData[i]=data[i];
 	}
 	for(int i=start;i<=end;i++){
-	    if(data[i]<divider){
+	    if(data[i]<=divider&&i!=pivot){
 		newData[lower]=data[i];
 		changed[lower]=1;
 		lower+=1;
@@ -57,12 +60,16 @@ public class Quick{
 	return indexDividerFinal;
     }
     public static void main(String[] args){
-	int[] test1=new int[]{12,4,1,23,5,8,11};
+	int[] test1=new int[]{12,4,1,10,23,34,2,3,1,5,8,8,11};
+	int[] test2=new int[]{999,999,999,4,1,0,3,2,999,999,999};
 	//System.out.println(test1.length);
 	for(int i=1;i<test1.length+1;i++){
 	    System.out.println(Quick.quickselect(test1,i));
 	}
-	 // System.out.println(Quick.quickselect(test1,8));
+	for(int i=1;i<test2.length+1;i++){
+	    System.out.println(Quick.quickselect(test2,i));
+	}
+	//System.out.println(Quick.quickselect(test1,8));
 	 // System.out.println(Quick.quickselect(test1,1));
     }
 }
