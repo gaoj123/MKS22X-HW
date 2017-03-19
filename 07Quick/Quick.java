@@ -17,11 +17,11 @@ public class Quick{
     }
     public static int helper(int[] data,int k, int start, int end){
 	int index=part(data,start,end);
-	if(index==k-1){
+	if(index==k){
 	    return data[index];
 	}
 	else{
-	    if(k-1>index){
+	    if(k>index){
 		return helper(data,k,index+1,end);
 	    }
 	    else{
@@ -131,5 +131,15 @@ public class Quick{
 	// }
 	//System.out.println(Quick.quickselect(test1,8));
 	 // System.out.println(Quick.quickselect(test1,1));
+	int[]ary = { 2, 10, 15, 23, 0,  5};
+	for(int i=0;i<ary.length;i++){
+	    System.out.println(Quick.quickselect(ary,i));
+	}
+	// select( ary , 0 ) //would return 0
+	//     select( ary , 1 ) // would return 2
+	//     select( ary , 2 ) // would return 5
+	//     select( ary , 3 )  //would return 10
+	//     select( ary , 4 )  //would return 15
+	//     select( ary , 5 ) // would return 23
     }
 }
