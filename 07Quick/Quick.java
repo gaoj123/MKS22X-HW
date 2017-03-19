@@ -2,6 +2,16 @@ public class Quick{
     public static String name(){
 	return "Gao,Jenny";
     }
+    public static void quicksort(int[] data){
+	qsh(data,0,data.length-1);
+    }
+    public static void qsh(int[] data, int start2, int end2){
+	if(start2<end2){
+	    int index=part(data,start2,end2);
+	    qsh(data,start2,index-1);
+	    qsh(data,index+1,end2);
+	}
+    }
     public static int quickselect(int[] data, int k){
 	return helper(data,k,0,data.length-1);
     }
@@ -101,19 +111,24 @@ public class Quick{
     // 	return indexDividerFinal;
     // }
     public static void main(String[] args){
-	int[] test3=new int[]{5,2,9,6,3,1};
-	int[] test1=new int[]{12,4,1,10,23,34,2,3,1,5,8,8,11};
-	int[] test2=new int[]{999,999,999,4,1,0,3,2,999,999,999};
-	//System.out.println(test1.length);
-	for(int i=1;i<test1.length+1;i++){
-	    System.out.println(Quick.quickselect(test1,i));
-	}
-	for(int i=1;i<test2.length+1;i++){
-	    System.out.println(Quick.quickselect(test2,i));
-	}
-	for(int i=1;i<test3.length+1;i++){
-	    System.out.println(Quick.quickselect(test3,i));
-	}
+	// int[] test3=new int[]{5,2,9,6,3,1};
+	// int[] test1=new int[]{12,4,1,10,23,34,2,3,1,5,8,8,11};
+	// int[] test2=new int[]{999,999,999,4,1,0,3,2,999,999,999};
+	// //System.out.println(test1.length);
+	// for(int i=1;i<test1.length+1;i++){
+	//     System.out.println(Quick.quickselect(test1,i));
+	// }
+	// for(int i=1;i<test2.length+1;i++){
+	//     System.out.println(Quick.quickselect(test2,i));
+	// }
+	// for(int i=1;i<test3.length+1;i++){
+	//     System.out.println(Quick.quickselect(test3,i));
+	// }
+	// int[] test4=new int[]{13,6,3,18,6,3,5,2,3,7,3,2,3,7,2};
+	// quicksort(test4);
+        // for(int i=0;i<test4.length;i++){
+	//     System.out.println(test4[i]);
+	// }
 	//System.out.println(Quick.quickselect(test1,8));
 	 // System.out.println(Quick.quickselect(test1,1));
     }
