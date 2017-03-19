@@ -70,6 +70,10 @@ public class Quick{
 	ary[ind1]=ary[ind2];
 	ary[ind2]=firstInd;
     }
+
+    //-------------------------------------------------
+    //Partition Not in Place
+    
     // public static int part(int[] data, int start, int end){
     // 	if(start==end){
     // 	    return start;
@@ -110,6 +114,8 @@ public class Quick{
     // 	}
     // 	return indexDividerFinal;
     // }
+    //---------------------------------------------
+    
     public static void main(String[] args){
 	// int[] test3=new int[]{5,2,9,6,3,1};
 	// int[] test1=new int[]{12,4,1,10,23,34,2,3,1,5,8,8,11};
@@ -131,10 +137,10 @@ public class Quick{
 	// }
 	//System.out.println(Quick.quickselect(test1,8));
 	 // System.out.println(Quick.quickselect(test1,1));
-	int[]ary = { 2, 10, 15, 23, 0,  5};
-	for(int i=0;i<ary.length;i++){
-	    System.out.println(Quick.quickselect(ary,i));
-	}
+	// int[]ary = { 2, 10, 15, 23, 0,  5};
+	// for(int i=0;i<ary.length;i++){
+	//     System.out.println(Quick.quickselect(ary,i));
+	// }
 	// select( ary , 0 ) //would return 0
 	//     select( ary , 1 ) // would return 2
 	//     select( ary , 2 ) // would return 5
