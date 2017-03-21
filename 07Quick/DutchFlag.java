@@ -111,19 +111,19 @@ public class DutchFlag{
     //---------------------------------------------
     
     public static void main(String[] args){
-	int[] test3=new int[]{5,2,9,6,3,1};
-	int[] test1=new int[]{12,4,1,10,23,34,2,3,1,5,8,8,11};
-	int[] test2=new int[]{999,999,999,4,1,0,3,2,999,999,999};
-	// //System.out.println(test1.length);
-	for(int i=0;i<test1.length;i++){
-	    System.out.println(DutchFlag.quickselect(test1,i));
-	}
-	for(int i=0;i<test2.length;i++){
-	    System.out.println(DutchFlag.quickselect(test2,i));
-	}
-	for(int i=0;i<test3.length;i++){
-	    System.out.println(DutchFlag.quickselect(test3,i));
-	}
+	// int[] test3=new int[]{5,2,9,6,3,1};
+	// int[] test1=new int[]{12,4,1,10,23,34,2,3,1,5,8,8,11};
+	// int[] test2=new int[]{999,999,999,4,1,0,3,2,999,999,999};
+	// // //System.out.println(test1.length);
+	// for(int i=0;i<test1.length;i++){
+	//     System.out.println(DutchFlag.quickselect(test1,i));
+	// }
+	// for(int i=0;i<test2.length;i++){
+	//     System.out.println(DutchFlag.quickselect(test2,i));
+	// }
+	// for(int i=0;i<test3.length;i++){
+	//     System.out.println(DutchFlag.quickselect(test3,i));
+	// }
 	// int[] test4=new int[]{13,6,3,18,6,3,5,2,3,7,3,2,3,7,2};
 	// quicksort(test4);
         // for(int i=0;i<test4.length;i++){
@@ -141,9 +141,13 @@ public class DutchFlag{
 	//     select( ary , 3 )  //would return 10
 	//     select( ary , 4 )  //would return 15
 	//     select( ary , 5 ) // would return 23
-	DutchFlag.quicksort(test1);
-	for(int i=0;i<test1.length;i++){
-	    System.out.println(test1[i]);
-	}
+	// int[] test5=new int[1000000];
+	// for(int i=0;i<1000000;i++){
+	//     test5[i]=(int)(Math.random() * 1000);
+	// }
+	// DutchFlag.quicksort(test5);
+	// for(int i=0;i<test5.length;i++){
+	//     System.out.println(test5[i]);
+	// }
     }
 }
