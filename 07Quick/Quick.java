@@ -3,68 +3,62 @@ public class Quick{
 	return "Gao,Jenny";
     }
     public static void quicksort(int[] data){
-	qsh(data,0,data.length-1);
+    	qsh(data,0,data.length-1);
     }
     public static void qsh(int[] data, int start2, int end2){
-	if(start2<end2){
-	    int index=part(data,start2,end2);
-	    qsh(data,start2,index-1);
-	    qsh(data,index+1,end2);
-	}
+    	if(start2<end2){
+    	    int[] ltGt=part(data,start2,end2);
+	    int lt=ltGt[0];
+	    int gt=ltGt[1];
+    	    qsh(data,start2,lt-1);
+    	    qsh(data,gt+1,end2);
+    	}
     }
     public static int quickselect(int[] data, int k){
 	return helper(data,k,0,data.length-1);
     }
     public static int helper(int[] data,int k, int start, int end){
-	int index=part(data,start,end);
-	if(index==k){
-	    return data[index];
+	int[] lessGreater=part(data,start,end);
+        int lt=lessGreater[0];
+	int gt=lessGreater[1];
+	if(k>=lt&&k<=gt){
+	    return data[lt];
 	}
 	else{
-	    if(k>index){
-		return helper(data,k,index+1,end);
+	    if(k>gt){
+		return helper(data,k,gt+1,end);
 	    }
 	    else{
-		return helper(data,k,start,index-1);
+		return helper(data,k,start,lt-1);
 	    }
 	}
     }
-    public static int part(int[] data, int start, int end){
-    	if(start==end){
-    	    return start;
-    	}
+    public static int[] part(int[] data, int start, int end){
 	int pivot=start+(int)(Math.random() * (end-start+1));
 	int divider=data[pivot];
 	swap(start,pivot,data);
-	int back=end;
-	int front=start+1;
-	while(front<back){
-	    // if(start==end){
-	    //     if(data[start]>=divider){
-	    // 	swap(0,start-1,data);
-	    //     }
-	    //     else{
-	    // 	swap(0,start,data);
-	    //     }
-	    // }
-	    if(data[front]<divider){
+	int lt=start;
+	int front=start;
+	int gt=end;
+	while(front<=gt){
+	    if(data[front]==divider){
 		front++;
 	    }
-	    else{
-		swap(front,back,data);
-		back--;
+	    else if(data[front]<divider){
+		swap(lt,front,data);
+		lt++;
+		front++;
+	    }
+	    else if(data[front]>divider){
+		swap(gt,front,data);
+		gt--;
 	    }
 	}
-	if(data[start]<=data[back]){
-	    swap(start,back-1,data);
-	    return back-1;
-	}
-	else{
-	    swap(start,back,data);
-	    return back;
-	}
+	int[] toRet=new int[2];
+	toRet[0]=lt;
+	toRet[1]=gt;
+	return toRet;
     }
-
     public static void swap(int ind1, int ind2, int[] ary){
 	int firstInd=ary[ind1];
 	ary[ind1]=ary[ind2];
@@ -120,14 +114,14 @@ public class Quick{
 	// int[] test3=new int[]{5,2,9,6,3,1};
 	// int[] test1=new int[]{12,4,1,10,23,34,2,3,1,5,8,8,11};
 	// int[] test2=new int[]{999,999,999,4,1,0,3,2,999,999,999};
-	// //System.out.println(test1.length);
-	// for(int i=1;i<test1.length+1;i++){
+	// // //System.out.println(test1.length);
+	// for(int i=0;i<test1.length;i++){
 	//     System.out.println(Quick.quickselect(test1,i));
 	// }
-	// for(int i=1;i<test2.length+1;i++){
+	// for(int i=0;i<test2.length;i++){
 	//     System.out.println(Quick.quickselect(test2,i));
 	// }
-	// for(int i=1;i<test3.length+1;i++){
+	// for(int i=0;i<test3.length;i++){
 	//     System.out.println(Quick.quickselect(test3,i));
 	// }
 	// int[] test4=new int[]{13,6,3,18,6,3,5,2,3,7,3,2,3,7,2};
@@ -147,5 +141,13 @@ public class Quick{
 	//     select( ary , 3 )  //would return 10
 	//     select( ary , 4 )  //would return 15
 	//     select( ary , 5 ) // would return 23
+	int[] test5=new int[1000000];
+	for(int i=0;i<1000000;i++){
+	    test5[i]=(int)(Math.random() * 1000);
+	}
+	Quick.quicksort(test5);
+	for(int i=0;i<test5.length;i++){
+	    System.out.println(test5[i]);
+	}
     }
 }
