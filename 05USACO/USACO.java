@@ -95,9 +95,9 @@ public class USACO{
 	int rows=Integer.parseInt(firstLine.next());
 	int cols=Integer.parseInt(firstLine.next());
 	int time=Integer.parseInt(firstLine.next());
-	System.out.println(rows);
-	System.out.println(cols);
-	System.out.println(time);
+	// System.out.println(rows);
+	// System.out.println(cols);
+	// System.out.println(time);
 	int[][][] board=new int[rows][cols][2];
 	for(int i=0;i<rows;i++){
 	    String lineOn=lineNum.next();
