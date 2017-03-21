@@ -141,13 +141,13 @@ public class Quick{
 	//     select( ary , 3 )  //would return 10
 	//     select( ary , 4 )  //would return 15
 	//     select( ary , 5 ) // would return 23
-	int[] test5=new int[1000000];
-	for(int i=0;i<1000000;i++){
-	    test5[i]=(int)(Math.random() * 1000);
-	}
-	Quick.quicksort(test5);
-	for(int i=0;i<test5.length;i++){
-	    System.out.println(test5[i]);
-	}
+	// int[] test5=new int[1000000];
+	// for(int i=0;i<1000000;i++){
+	//     test5[i]=(int)(Math.random() * 1000);
+	// }
+	// Quick.quicksort(test5);
+	// for(int i=0;i<test5.length;i++){
+	//     System.out.println(test5[i]);
+	// }
     }
 }
