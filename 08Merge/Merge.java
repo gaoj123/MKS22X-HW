@@ -13,17 +13,7 @@ public class Merge{
 		divide=len/2;
 	    }
 	    int[] left=makeArr(ary,0,divide-1);
-	    // System.out.println("LEFT");
-	    // for(int i=0;i<left.length;i++){
-	    // 	System.out.println(left[i]);
-	    // }
-	    // System.out.println("\n");
 	    int[] right=makeArr(ary,divide,len-1);
-	    // System.out.println("RIGHT");
-	    // for(int i=0;i<right.length;i++){
-	    // 	System.out.println(right[i]);
-	    // }
-	    // System.out.println("\n");
 	    if(left.length!=1){
 		mergesort(left);
 	    }
@@ -63,40 +53,30 @@ public class Merge{
 	    }
 	    ind++;
 	}
-	// System.out.println(i);
-	// System.out.println(j);
 	if(notDoneA==1){
-	    //System.out.println("a");
 	    for(int k=i;k<a.length;k++){
 		destination[ind]=a[k];
 		ind++;
 	    }
-	    //destination[destination.length-1]=a[a.length-1];
 	}
 	if(notDoneB==1){
 	    for(int k=j;k<b.length;k++){
 		destination[ind]=b[k];
 		ind++;
 	    }
-	    //destination[destination.length-1]=b[b.length-1];
 	}
-	// System.out.println("start");
-	// for(int in=0;in<destination.length;in++){
-	//     System.out.println(destination[in]);
-	// }
-	// System.out.println("end");
     }
     public static void main(String[] arg){
-	int j=1000000;
-	int[] test=new int[1000000];
-	for(int i=0;i<1000000;i++){
-	    test[i]=j-i;
-	}
-	// int[] test=new int[]{1,6,3,2,4,45,23,4,2,1};
-	mergesort(test);
-	for(int i=0;i<test.length;i++){
-	    System.out.println(test[i]);
-	}
+	// int j=1000000;
+	// int[] test=new int[1000000];
+	// for(int i=0;i<1000000;i++){
+	//     test[i]=(int)(Math.random()*900);
+	// }
+	// // int[] test=new int[]{1,6,3,2,4,45,23,4,2,1};
+	// mergesort(test);
+	// for(int i=0;i<test.length;i++){
+	//     System.out.println(test[i]);
+	// }
 	// int[] t=new int[]{2,1,34,45,4};
 	// int[] a=new int[]{1,2};
 	// int[] b=new int[]{4,34,45};
