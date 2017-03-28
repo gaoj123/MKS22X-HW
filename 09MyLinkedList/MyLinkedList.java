@@ -1,6 +1,10 @@
 public class MyLinkedList{
     LNode start;
     int size;
+    public MyLinkedList(){
+	size=0;
+	start=null;
+    }
     class LNode{
 	int val;
 	LNode next;
@@ -26,5 +30,8 @@ public class MyLinkedList{
     public static void main(String[] args){
 	LNode a=new LNode(5);
 	LNode b=new LNode(3,a);
+	MyLinkedList c=new MyLinkedList();
+	c.start=b;
+	System.out.println(c);
     }
 }
