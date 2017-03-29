@@ -5,9 +5,16 @@ public class MyLinkedList{
 	size=0;
 	start=null;
     }
-    class LNode{
-	int val;
-	LNode next;
+    //first try adding to the front
+    public boolean add(int value){
+	LNode newNode=new LNode(value,start);
+	start=newNode;
+	size++;
+	return true;
+    }
+    private class LNode{
+	private int val;
+	private LNode next;
 	public LNode(int value){
 	    val=value;
 	}
@@ -19,19 +26,21 @@ public class MyLinkedList{
     public String toString(){
 	String toRet="[";
 	LNode current=start;
-	while(current.next!=null){
+	for(int i=0;i<size;i++){
 	    toRet+=current.val;
-	    toRet+=",";
+	    if(i!=size-1){
+		toRet+=",";
+	    }
 	    current=current.next;
 	}
 	toRet+="]";
 	return toRet;
     }
     public static void main(String[] args){
-	LNode a=new LNode(5);
-	LNode b=new LNode(3,a);
 	MyLinkedList c=new MyLinkedList();
-	c.start=b;
+	c.add(5);
+	c.add(4);
+	c.add(6);
 	System.out.println(c);
     }
 }
