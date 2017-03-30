@@ -5,6 +5,33 @@ public class MyLinkedList{
 	size=0;
 	start=null;
     }
+    public int get(int index){
+	LNode current=start;
+	int toRet=0;
+	for(int i=0;i<size;i++){
+	    if(index==i){
+		toRet=current.val;
+	    }
+	    else{
+		current=current.next;
+	    }
+	}
+	return toRet;
+    }
+    public int set(int index, int newValue){
+	int oldVal=0;
+	LNode current=start;
+	for(int i=0;i<size;i++){
+	    if(index==i){
+		oldVal=current.val;
+		current.val=newValue;
+	    }
+	    else{
+		current=current.next;
+	    }
+	}
+	return oldVal;
+    }
     //first try adding to the front
     public boolean add(int value){
 	if(size==0){
@@ -35,8 +62,8 @@ public class MyLinkedList{
     public int size(){
 	return size;
     }
-    // public void add(int index, int value){
-    // }
+    public void add(int index, int value){
+    }
     class LNode{
 	int val;
 	LNode next;
@@ -67,6 +94,9 @@ public class MyLinkedList{
 	c.add(4);
 	c.add(6);
 	c.add(10);
+	System.out.println(c);
+	//System.out.println(c.get(0));
+	c.set(2,30);
 	System.out.println(c);
     }
 }
