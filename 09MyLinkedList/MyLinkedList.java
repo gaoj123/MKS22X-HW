@@ -86,8 +86,11 @@ public class MyLinkedList{
 	// }
 	return indToRet;
     }
-    public void add(int index, int value){
-    }
+    // public void add(int index, int value){
+    // }
+    // public int remove(int index){
+    // 	int valRemoved=0;
+    // }
     class LNode{
 	int val;
 	LNode next;
