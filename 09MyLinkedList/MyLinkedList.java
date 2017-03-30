@@ -8,7 +8,7 @@ public class MyLinkedList{
     public int get(int index){
 	LNode current=start;
 	int toRet=0;
-	for(int i=0;i<size;i++){
+	for(int i=0;i<size();i++){
 	    if(index==i){
 		toRet=current.val;
 	    }
@@ -21,7 +21,7 @@ public class MyLinkedList{
     public int set(int index, int newValue){
 	int oldVal=0;
 	LNode current=start;
-	for(int i=0;i<size;i++){
+	for(int i=0;i<size();i++){
 	    if(index==i){
 		oldVal=current.val;
 		current.val=newValue;
@@ -34,7 +34,7 @@ public class MyLinkedList{
     }
     //first try adding to the front
     public boolean add(int value){
-	if(size==0){
+	if(size()==0){
 	    LNode newNode=new LNode(value);
 	    start=newNode;
 	}
@@ -47,8 +47,8 @@ public class MyLinkedList{
 	else{
 	    LNode newNode=new LNode(value);
 	    LNode current=start;
-	    for(int i=0;i<size;i++){
-		if(i==size-1){ //last link
+	    for(int i=0;i<size();i++){
+		if(i==size()-1){ //last link
 		    current.next=newNode;
 		}
 		else{
@@ -61,6 +61,30 @@ public class MyLinkedList{
     }
     public int size(){
 	return size;
+    }
+    public int indexOf(int value){
+	int indToRet=-1;
+	LNode current=start;
+	int i=0;
+	while(i<size()){
+	    if(current.val==value){
+		indToRet=i;
+		i=size()+2;
+	    }
+	    else{
+		current=current.next;
+	    }
+	    i++;
+	}
+	// for(int i=0;i<size();i++){
+	//     if(current.val==value){
+	// 	indToRet=i;
+	//     }
+	//     else{
+	// 	current=current.next;
+	//     }
+	// }
+	return indToRet;
     }
     public void add(int index, int value){
     }
@@ -96,7 +120,7 @@ public class MyLinkedList{
 	c.add(10);
 	System.out.println(c);
 	//System.out.println(c.get(0));
-	c.set(2,30);
-	System.out.println(c);
+	//c.set(2,30);
+	System.out.println(c.indexOf(10));
     }
 }
