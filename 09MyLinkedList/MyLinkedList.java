@@ -86,11 +86,60 @@ public class MyLinkedList{
 	// }
 	return indToRet;
     }
-    // public void add(int index, int value){
-    // }
-    // public int remove(int index){
-    // 	int valRemoved=0;
-    // }
+    public void add(int index, int value){
+	int i=0;
+	LNode current=start;
+	if(index==0){
+	    LNode newNode=new LNode(value,current);
+	    start=newNode;
+	}
+	else{
+	    while(i<size()){
+		// if(index==0){
+		//     LNode newNode=new LNode(value,current.next);
+		// 	current=newNode;
+		// 	i=size()+2;
+		// }
+		if(i==index-1){
+		    LNode newNode=new LNode(value,current.next);
+		    current.next=newNode;
+		    i=size()+2;
+		}
+		// else if(i==index){
+		// 	LNode newNode=new LNode(value);
+		// 	newNode.next=current;
+		// 	test.next=newNode;
+		// 	i=size()+2;
+		// }
+		else{
+		    current=current.next;
+		}
+		i++;
+	    }
+	}
+	size++;
+    }
+    public int remove(int index){
+    	int valRemoved=0;
+	int i=0;
+	LNode current=start;
+	if(index==0){
+	    start=current.next;
+	}
+	else{
+	    while(i<size()){
+		if(i==index-1){
+		    LNode prev=current;
+		    LNode next=current.next;
+		    valRemoved=next.val;
+		    prev.next=next.next;
+		    i=size()+2;
+		}
+	    }
+	}
+	size--;
+	return valRemoved;
+    }
     class LNode{
 	int val;
 	LNode next;
@@ -117,13 +166,26 @@ public class MyLinkedList{
     }
     public static void main(String[] args){
 	MyLinkedList c=new MyLinkedList();
+	// c.add(5);
+	// c.add(4);
+	// c.add(6);
+	// c.add(10);
+	System.out.println(c);
 	c.add(5);
 	c.add(4);
-	c.add(6);
-	c.add(10);
+	c.add(3);
+	c.add(2);
+	System.out.println(c);
+	// c.add(0,3);
+	// c.add(1,2);
+        c.remove(0);
+	// for(int i=0;i<100;i++){
+	//     c.add(i,j);
+	//     j++;
+	// }
 	System.out.println(c);
 	//System.out.println(c.get(0));
 	//c.set(2,30);
-	System.out.println(c.indexOf(10));
+	//System.out.println(c.indexOf(10));
     }
 }
