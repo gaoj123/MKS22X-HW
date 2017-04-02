@@ -93,6 +93,10 @@ public class MyLinkedList{
 	    LNode newNode=new LNode(value,current);
 	    start=newNode;
 	}
+	else if(index==size()){
+	    add(value);
+	    size--;
+	}
 	else{
 	    while(i<size()){
 		// if(index==0){
@@ -124,7 +128,24 @@ public class MyLinkedList{
 	int i=0;
 	LNode current=start;
 	if(index==0){
+	    valRemoved=current.val;
 	    start=current.next;
+	}
+	else if(index==size()-1){
+	    int j=0;
+	    while(j<size()){
+		if(j==size()-2){
+		    LNode lookingAt=current;
+		    LNode nextNode=current.next;
+		    valRemoved=nextNode.val;
+		    lookingAt.next=null;
+		    j=size()+2;
+		}
+		else{
+		    current=current.next;
+		}
+		j++;
+	    }
 	}
 	else{
 	    while(i<size()){
@@ -132,6 +153,7 @@ public class MyLinkedList{
 		    LNode prev=current;
 		    LNode next=current.next;
 		    valRemoved=next.val;
+		    System.out.println("b");
 		    prev.next=next.next;
 		    i=size()+2;
 		}
@@ -154,9 +176,9 @@ public class MyLinkedList{
     public String toString(){
 	String toRet="[";
 	LNode current=start;
-	for(int i=0;i<size;i++){
+	for(int i=0;i<size();i++){
 	    toRet+=current.val;
-	    if(i!=size-1){
+	    if(i!=size()-1){
 		toRet+=",";
 	    }
 	    current=current.next;
@@ -166,24 +188,39 @@ public class MyLinkedList{
     }
     public static void main(String[] args){
 	MyLinkedList c=new MyLinkedList();
+	// for(int i=0;i<10000;i++){
+	//     c.add(i);
+	//     //System.out.println(c.get(i));
+	// }
+	// System.out.println(c);
+	// // System.out.println(c.remove(4));
+	// for(int j=9999;j>=0;j--){
+	//     System.out.println(c.remove(j));
+	// }
+	//c.add(100,6);
+	//c.add(100,6);
+	//System.out.println(c.indexOf(6));
+	// for(int j=0;j<100;j++){
+	//     System.out.println(c.set(j,j*2));
+	// }
 	// c.add(5);
 	// c.add(4);
 	// c.add(6);
 	// c.add(10);
-	System.out.println(c);
-	c.add(5);
-	c.add(4);
-	c.add(3);
-	c.add(2);
-	System.out.println(c);
+	//System.out.println(c);
+	// c.add(5);
+	// c.add(4);
+	// c.add(3);
+	// c.add(2);
+	//System.out.println(c);
 	// c.add(0,3);
 	// c.add(1,2);
-        c.remove(0);
+        //c.remove(0);
 	// for(int i=0;i<100;i++){
 	//     c.add(i,j);
 	//     j++;
 	// }
-	System.out.println(c);
+	//System.out.println(c);
 	//System.out.println(c.get(0));
 	//c.set(2,30);
 	//System.out.println(c.indexOf(10));
