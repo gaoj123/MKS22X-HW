@@ -6,6 +6,9 @@ public class MyLinkedList{
 	start=null;
     }
     public int get(int index){
+	if(index<0||index>=size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	LNode current=start;
 	int toRet=0;
 	for(int i=0;i<size();i++){
@@ -19,6 +22,9 @@ public class MyLinkedList{
 	return toRet;
     }
     public int set(int index, int newValue){
+	if(index<0||index>=size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	int oldVal=0;
 	LNode current=start;
 	for(int i=0;i<size();i++){
@@ -87,6 +93,9 @@ public class MyLinkedList{
 	return indToRet;
     }
     public void add(int index, int value){
+	if(index<0||index>size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	int i=0;
 	LNode current=start;
 	if(index==0){
@@ -124,6 +133,9 @@ public class MyLinkedList{
 	size++;
     }
     public int remove(int index){
+	if(index<0||index>=size()){
+	    throw new IndexOutOfBoundsException();
+	}
     	int valRemoved=0;
 	int i=0;
 	LNode current=start;
