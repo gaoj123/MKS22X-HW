@@ -82,14 +82,6 @@ public class MyLinkedList{
 	    }
 	    i++;
 	}
-	// for(int i=0;i<size();i++){
-	//     if(current.val==value){
-	// 	indToRet=i;
-	//     }
-	//     else{
-	// 	current=current.next;
-	//     }
-	// }
 	return indToRet;
     }
     public void add(int index, int value){
@@ -108,22 +100,11 @@ public class MyLinkedList{
 	}
 	else{
 	    while(i<size()){
-		// if(index==0){
-		//     LNode newNode=new LNode(value,current.next);
-		// 	current=newNode;
-		// 	i=size()+2;
-		// }
 		if(i==index-1){
 		    LNode newNode=new LNode(value,current.next);
 		    current.next=newNode;
 		    i=size()+2;
 		}
-		// else if(i==index){
-		// 	LNode newNode=new LNode(value);
-		// 	newNode.next=current;
-		// 	test.next=newNode;
-		// 	i=size()+2;
-		// }
 		else{
 		    current=current.next;
 		}
@@ -199,10 +180,14 @@ public class MyLinkedList{
 	return toRet;
     }
     public static void main(String[] args){
-	MyLinkedList c=new MyLinkedList();
+	// MyLinkedList c=new MyLinkedList();
 	// for(int i=0;i<10000;i++){
-	//     c.add(i);
+	//     c.add(5);
 	//     //System.out.println(c.get(i));
+	// }
+	// for(int j=0;j<10000;j++){
+	//     System.out.println("get "+c.get(j));
+	//     System.out.println("index "+c.indexOf(c.get(j)));
 	// }
 	// System.out.println(c);
 	// // System.out.println(c.remove(4));
