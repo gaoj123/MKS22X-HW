@@ -1,5 +1,6 @@
 public class MyLinkedList{
     LNode start;
+    LNode tail;
     int size;
     public MyLinkedList(){
 	size=0;
@@ -56,6 +57,7 @@ public class MyLinkedList{
 	    for(int i=0;i<size();i++){
 		if(i==size()-1){ //last link
 		    current.next=newNode;
+		    newNode.prev=current;
 		}
 		else{
 		    current=current.next;
@@ -67,6 +69,118 @@ public class MyLinkedList{
     }
     public int size(){
 	return size;
+    }
+    public int remove(int index){
+	int toRet=-1;
+	toRet=remove(getNode(index));
+	//size--;
+	return toRet;
+    	// if(index<0||index>=size()){
+    	//     throw new IndexOutOfBoundsException();
+    	// }
+    	// int valRemoved=0;
+    	// int i=0;
+    	// LNode current=start;
+    	// if(index==0){
+    	//     valRemoved=current.val;
+    	//     start=current.next;
+    	// }
+    	// else if(index==size()-1){
+    	//     int j=0;
+    	//     while(j<size()){
+    	// 	if(j==size()-2){
+    	// 	    LNode lookingAt=current;
+    	// 	    LNode nextNode=current.next;
+    	// 	    valRemoved=nextNode.val;
+    	// 	    lookingAt.next=null;
+    	// 	    j=size()+2;
+    	// 	}
+    	// 	else{
+    	// 	    current=current.next;
+    	// 	}
+    	// 	j++;
+    	//     }
+    	// }
+    	// else{
+	//     //System.out.println("yes");
+	//     remove(getNode(index));
+    	//     // while(i<size()){
+    	//     // 	if(i==index-1){
+    	//     // 	    LNode prev=current;
+    	//     // 	    LNode next=current.next;
+    	//     // 	    valRemoved=next.val;
+    	//     // 	    System.out.println("b");
+    	//     // 	    prev.next=next.next;
+    	//     // 	    i=size()+2;
+    	//     // 	}
+    	//     // }
+    	// }
+    	// size--;
+    	// return valRemoved;
+    }
+    // public void remove(int index){
+    // 	remove(getNode(index));
+    // }
+    private void insertAfter(LNode toBeAdded, LNode location){
+	if(location.next==null){
+	    toBeAdded.next=null;
+	    location.next=toBeAdded;
+	    toBeAdded.prev=location;
+	}
+	else{
+	    toBeAdded.next=location.next;
+	    location.next=toBeAdded;
+	    toBeAdded.prev=location;
+	}
+	size++;
+    }
+    private void insertBefore(LNode toBeAdded, LNode location){
+	if(location.prev==null){
+	    toBeAdded.prev=null;
+	    location.prev=toBeAdded;
+	    toBeAdded.next=location;
+	}
+	else{
+	    toBeAdded.prev=location.prev;
+	    location.prev=toBeAdded;
+	    toBeAdded.next=location;
+	}
+	size++;
+    }
+    private int remove(LNode node){
+	int toRet=-1;
+	toRet=node.val;
+	if(node.prev==null){
+	    start=node.next;
+	    node.next.prev=null;
+	}
+	else if(node.next==null){
+	    node.prev.next=null;
+	    tail=node.prev;
+	}
+	else{
+	    node.prev.next=node.next;
+	    node.next.prev=node.prev;
+	}
+	size--;
+	return toRet;
+    }
+    private LNode getNode(int index){
+	int i=0;
+	LNode current=start;
+	LNode toRet=null;
+	while(i<size()){
+	    if(i==index){
+		//System.out.println("a");
+		toRet=current;
+		i=size()+2;
+	    }
+	    else{
+		current=current.next;
+	    }
+	    i++;
+	}
+	return toRet;
     }
     public int indexOf(int value){
 	int indToRet=-1;
@@ -93,6 +207,7 @@ public class MyLinkedList{
 	if(index==0){
 	    LNode newNode=new LNode(value,current);
 	    start=newNode;
+	    newNode.prev=null;
 	}
 	else if(index==size()){
 	    add(value);
@@ -103,6 +218,7 @@ public class MyLinkedList{
 		if(i==index-1){
 		    LNode newNode=new LNode(value,current.next);
 		    current.next=newNode;
+		    newNode.prev=current;
 		    i=size()+2;
 		}
 		else{
@@ -113,51 +229,52 @@ public class MyLinkedList{
 	}
 	size++;
     }
-    public int remove(int index){
-	if(index<0||index>=size()){
-	    throw new IndexOutOfBoundsException();
-	}
-    	int valRemoved=0;
-	int i=0;
-	LNode current=start;
-	if(index==0){
-	    valRemoved=current.val;
-	    start=current.next;
-	}
-	else if(index==size()-1){
-	    int j=0;
-	    while(j<size()){
-		if(j==size()-2){
-		    LNode lookingAt=current;
-		    LNode nextNode=current.next;
-		    valRemoved=nextNode.val;
-		    lookingAt.next=null;
-		    j=size()+2;
-		}
-		else{
-		    current=current.next;
-		}
-		j++;
-	    }
-	}
-	else{
-	    while(i<size()){
-		if(i==index-1){
-		    LNode prev=current;
-		    LNode next=current.next;
-		    valRemoved=next.val;
-		    System.out.println("b");
-		    prev.next=next.next;
-		    i=size()+2;
-		}
-	    }
-	}
-	size--;
-	return valRemoved;
-    }
+    // public int remove(int index){
+    // 	if(index<0||index>=size()){
+    // 	    throw new IndexOutOfBoundsException();
+    // 	}
+    // 	int valRemoved=0;
+    // 	int i=0;
+    // 	LNode current=start;
+    // 	if(index==0){
+    // 	    valRemoved=current.val;
+    // 	    start=current.next;
+    // 	}
+    // 	else if(index==size()-1){
+    // 	    int j=0;
+    // 	    while(j<size()){
+    // 		if(j==size()-2){
+    // 		    LNode lookingAt=current;
+    // 		    LNode nextNode=current.next;
+    // 		    valRemoved=nextNode.val;
+    // 		    lookingAt.next=null;
+    // 		    j=size()+2;
+    // 		}
+    // 		else{
+    // 		    current=current.next;
+    // 		}
+    // 		j++;
+    // 	    }
+    // 	}
+    // 	else{
+    // 	    while(i<size()){
+    // 		if(i==index-1){
+    // 		    LNode prev=current;
+    // 		    LNode next=current.next;
+    // 		    valRemoved=next.val;
+    // 		    System.out.println("b");
+    // 		    prev.next=next.next;
+    // 		    i=size()+2;
+    // 		}
+    // 	    }
+    // 	}
+    // 	size--;
+    // 	return valRemoved;
+    // }
     class LNode{
 	int val;
 	LNode next;
+	LNode prev;
 	public LNode(int value){
 	    val=value;
 	}
@@ -180,20 +297,29 @@ public class MyLinkedList{
 	return toRet;
     }
     public static void main(String[] args){
-	// MyLinkedList c=new MyLinkedList();
-	// for(int i=0;i<10000;i++){
-	//     c.add(5);
-	//     //System.out.println(c.get(i));
-	// }
+	MyLinkedList c=new MyLinkedList();
+	// c.add(5);
+	// c.add(6);
+	// c.add(7);
+	// System.out.println(c);
+	// c.remove(2);
+	// System.out.println(c);
+	for(int i=0;i<10000;i++){
+	    c.add(i);
+	    System.out.println(c.size());
+	}
+	//System.out.println(c.remove(9999));
 	// for(int j=0;j<10000;j++){
 	//     System.out.println("get "+c.get(j));
 	//     System.out.println("index "+c.indexOf(c.get(j)));
 	// }
 	// System.out.println(c);
 	// // System.out.println(c.remove(4));
-	// for(int j=9999;j>=0;j--){
-	//     System.out.println(c.remove(j));
-	// }
+        for(int j=9999;j>=0;j--){
+	    c.remove(j);
+	    //System.out.println(c.remove(j));
+	}
+	System.out.println(c);
 	//c.add(100,6);
 	//c.add(100,6);
 	//System.out.println(c.indexOf(6));
