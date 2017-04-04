@@ -71,8 +71,15 @@ public class MyLinkedList{
 	return size;
     }
     private int remove(LNode node){
-	// if(size()==1){
-	//     throw new IndexOutOfBoundsException();
+	if(size()==1){
+	    int toRet=-1;
+	    toRet=start.val;
+	    start=null;
+	    size--;
+	    return toRet;
+	}
+	//     //throw new IndexOutOfBoundsException();
+	//     //try not to throw exception; instead, make it print "[]"?
 	// }
 	int toRet=-1;
 	toRet=node.val;
@@ -333,17 +340,29 @@ public class MyLinkedList{
 	return toRet;
     }
     public static void main(String[] args){
+	//insertBefore not working right now
+	//idk if remove is working properly/properly handling cases
 	MyLinkedList c=new MyLinkedList();
+	MyLinkedList.LNode a=c.new LNode(5);
 	// c.add(5);
 	// c.add(6);
 	// c.add(7);
 	// System.out.println(c);
 	// c.remove(2);
-	// System.out.println(c);
-	for(int i=0;i<10000;i++){
-	    c.add(i);
-	    //System.out.println(c.size());
-	}
+	c.add(2);
+	//c.add(3);
+	//c.add(3);
+	//c.remove(0);
+	System.out.println(c.remove(c.getNode(0)));
+	System.out.println(c);
+	//c.insertAfter(a,c.getNode(0));
+	//System.out.println(c);
+	// for(int i=0;i<10000;i++){
+	//     c.add(i);
+	//     //System.out.println(c.size());
+	// }
+	// c.insertAfter();
+	// c.insertBefore();
 	//System.out.println(c.remove(9999));
 	// for(int j=0;j<10000;j++){
 	//     System.out.println("get "+c.get(j));
@@ -351,11 +370,11 @@ public class MyLinkedList{
 	// }
 	// System.out.println(c);
 	// // System.out.println(c.remove(4));
-        for(int j=9999;j>=0;j--){
-	    //c.remove(j);
-	    System.out.println(c.remove(j));
-	}
-	System.out.println(c);
+        // for(int j=9999;j>=0;j--){
+	//     //c.remove(j);
+	//     System.out.println(c.remove(j));
+	// }
+	// System.out.println(c);
 	//System.out.println(c);
 	//c.add(100,6);
 	//c.add(100,6);
