@@ -70,6 +70,27 @@ public class MyLinkedList{
     public int size(){
 	return size;
     }
+    private int remove(LNode node){
+	// if(size()==1){
+	//     throw new IndexOutOfBoundsException();
+	// }
+	int toRet=-1;
+	toRet=node.val;
+	if(node.prev==null){
+	    start=node.next;
+	    node.next.prev=null;
+	}
+	else if(node.next==null){
+	    node.prev.next=null;
+	    tail=node.prev;
+	}
+	else{
+	    node.prev.next=node.next;
+	    node.next.prev=node.prev;
+	}
+	size--;
+	return toRet;
+    }
     public int remove(int index){
 	if(index<0||index>=size()){
     	    throw new IndexOutOfBoundsException();
@@ -159,27 +180,27 @@ public class MyLinkedList{
 	}
 	size++;
     }
-    private int remove(LNode node){
-	if(size()==1){
-	    throw new IndexOutOfBoundsException();
-	}
-	int toRet=-1;
-	toRet=node.val;
-	if(node.prev==null){
-	    start=node.next;
-	    node.next.prev=null;
-	}
-	else if(node.next==null){
-	    node.prev.next=null;
-	    tail=node.prev;
-	}
-	else{
-	    node.prev.next=node.next;
-	    node.next.prev=node.prev;
-	}
-	size--;
-	return toRet;
-    }
+    // private int remove(LNode node){
+    // 	if(size()==1){
+    // 	    throw new IndexOutOfBoundsException();
+    // 	}
+    // 	int toRet=-1;
+    // 	toRet=node.val;
+    // 	if(node.prev==null){
+    // 	    start=node.next;
+    // 	    node.next.prev=null;
+    // 	}
+    // 	else if(node.next==null){
+    // 	    node.prev.next=null;
+    // 	    tail=node.prev;
+    // 	}
+    // 	else{
+    // 	    node.prev.next=node.next;
+    // 	    node.next.prev=node.prev;
+    // 	}
+    // 	size--;
+    // 	return toRet;
+    // }
     private LNode getNode(int index){
 	int i=0;
 	LNode current=start;
