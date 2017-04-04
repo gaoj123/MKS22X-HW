@@ -71,10 +71,22 @@ public class MyLinkedList{
 	return size;
     }
     public int remove(int index){
-	int toRet=-1;
-	toRet=remove(getNode(index));
+	if(index<0||index>=size()){
+    	    throw new IndexOutOfBoundsException();
+    	}
+	if(size()==1){
+	    int toRet=-1;
+	    toRet=start.val;
+	    start=null;
+	    size--;
+	    return toRet;
+	}
+	else{
+	    int toRet=-1;
+	    toRet=remove(getNode(index));
 	//size--;
-	return toRet;
+	    return toRet;
+	}
     	// if(index<0||index>=size()){
     	//     throw new IndexOutOfBoundsException();
     	// }
@@ -148,6 +160,9 @@ public class MyLinkedList{
 	size++;
     }
     private int remove(LNode node){
+	if(size()==1){
+	    throw new IndexOutOfBoundsException();
+	}
 	int toRet=-1;
 	toRet=node.val;
 	if(node.prev==null){
@@ -306,7 +321,7 @@ public class MyLinkedList{
 	// System.out.println(c);
 	for(int i=0;i<10000;i++){
 	    c.add(i);
-	    System.out.println(c.size());
+	    //System.out.println(c.size());
 	}
 	//System.out.println(c.remove(9999));
 	// for(int j=0;j<10000;j++){
@@ -316,10 +331,11 @@ public class MyLinkedList{
 	// System.out.println(c);
 	// // System.out.println(c.remove(4));
         for(int j=9999;j>=0;j--){
-	    c.remove(j);
-	    //System.out.println(c.remove(j));
+	    //c.remove(j);
+	    System.out.println(c.remove(j));
 	}
 	System.out.println(c);
+	//System.out.println(c);
 	//c.add(100,6);
 	//c.add(100,6);
 	//System.out.println(c.indexOf(6));
