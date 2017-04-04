@@ -71,10 +71,11 @@ public class MyLinkedList{
 	return size;
     }
     private int remove(LNode node){
-	if(size()==1){
+	if(size()==1||start==tail){
 	    int toRet=-1;
 	    toRet=start.val;
 	    start=null;
+	    tail=null;
 	    size--;
 	    return toRet;
 	}
@@ -102,10 +103,11 @@ public class MyLinkedList{
 	if(index<0||index>=size()){
     	    throw new IndexOutOfBoundsException();
     	}
-	if(size()==1){
+	if(size()==1||start==tail){
 	    int toRet=-1;
 	    toRet=start.val;
 	    start=null;
+	    tail=null;
 	    size--;
 	    return toRet;
 	}
