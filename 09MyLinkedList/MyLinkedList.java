@@ -70,21 +70,21 @@ public class MyLinkedList{
     public int size(){
 	return size;
     }
-    private int remove(LNode node){
+    private void remove(LNode node){
 	if(size()==1||start==tail){
-	    int toRet=-1;
-	    toRet=start.val;
+	    //int toRet=-1;
+	    //toRet=start.val;
 	    start=null;
 	    tail=null;
 	    size--;
-	    return toRet;
+	    //return toRet;
 	}
 	//     //throw new IndexOutOfBoundsException();
 	//     //try not to throw exception; instead, make it print "[]"?
 	// }
-	int toRet=-1;
-	toRet=node.val;
-	if(node.prev==null){
+	//int toRet=-1;
+	//toRet=node.val;
+	else if(node.prev==null){
 	    start=node.next;
 	    node.next.prev=null;
 	}
@@ -97,7 +97,7 @@ public class MyLinkedList{
 	    node.next.prev=node.prev;
 	}
 	size--;
-	return toRet;
+	//return toRet;
     }
     public int remove(int index){
 	if(index<0||index>=size()){
@@ -113,7 +113,9 @@ public class MyLinkedList{
 	}
 	else{
 	    int toRet=-1;
-	    toRet=remove(getNode(index));
+	    toRet=getNthNode(index).val;
+	    remove(getNthNode(index));
+	    //toRet=remove(getNthNode(index));
 	//size--;
 	    return toRet;
 	}
@@ -163,7 +165,7 @@ public class MyLinkedList{
     // public void remove(int index){
     // 	remove(getNode(index));
     // }
-    private void insertAfter(LNode toBeAdded, LNode location){
+    private void addAfter(LNode location, LNode toBeAdded){
 	if(location.next==null){
 	    toBeAdded.next=null;
 	    location.next=toBeAdded;
@@ -210,7 +212,7 @@ public class MyLinkedList{
     // 	size--;
     // 	return toRet;
     // }
-    private LNode getNode(int index){
+    private LNode getNthNode(int index){
 	int i=0;
 	LNode current=start;
 	LNode toRet=null;
@@ -316,7 +318,7 @@ public class MyLinkedList{
     // 	size--;
     // 	return valRemoved;
     // }
-    class LNode{
+    private class LNode{
 	int val;
 	LNode next;
 	LNode prev;
@@ -326,6 +328,9 @@ public class MyLinkedList{
 	public LNode(int value, LNode nex){
 	    val=value;
 	    next=nex;
+	}
+	public String toString(){
+	    return val+"";
 	}
     }
     public String toString(){
@@ -352,10 +357,13 @@ public class MyLinkedList{
 	// System.out.println(c);
 	// c.remove(2);
 	c.add(2);
+	//c.add(4);
+	c.addAfter(c.getNthNode(0),a);
 	//c.add(3);
 	//c.add(3);
-	//c.remove(0);
-	System.out.println(c.remove(c.getNode(0)));
+	c.remove(c.getNthNode(0));
+	c.remove(c.getNthNode(0));
+	//System.out.println(c.remove(c.getNthNode(0)));
 	System.out.println(c);
 	//c.insertAfter(a,c.getNode(0));
 	//System.out.println(c);
