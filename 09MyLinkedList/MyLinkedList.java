@@ -170,6 +170,7 @@ public class MyLinkedList{
 	    toBeAdded.next=null;
 	    location.next=toBeAdded;
 	    toBeAdded.prev=location;
+	    tail=toBeAdded;
 	}
 	else{
 	    toBeAdded.next=location.next;
@@ -180,14 +181,23 @@ public class MyLinkedList{
     }
     private void insertBefore(LNode toBeAdded, LNode location){
 	if(location.prev==null){
+	    //location.prev.next=toBeAdded;
 	    toBeAdded.prev=null;
-	    location.prev=toBeAdded;
 	    toBeAdded.next=location;
+	    location.prev=toBeAdded;
+	    start=toBeAdded;
+	    // toBeAdded.prev=null;
+	    // location.prev=toBeAdded;
+	    // toBeAdded.next=location;
 	}
 	else{
+	    location.prev.next=toBeAdded;
 	    toBeAdded.prev=location.prev;
-	    location.prev=toBeAdded;
 	    toBeAdded.next=location;
+	    location.prev=toBeAdded;
+	    // toBeAdded.prev=location.prev;
+	    // location.prev=toBeAdded;
+	    // toBeAdded.next=location;
 	}
 	size++;
     }
@@ -349,22 +359,25 @@ public class MyLinkedList{
     public static void main(String[] args){
 	//insertBefore not working right now
 	//idk if remove is working properly/properly handling cases
-	MyLinkedList c=new MyLinkedList();
-	MyLinkedList.LNode a=c.new LNode(5);
-	// c.add(5);
-	// c.add(6);
+	//MyLinkedList c=new MyLinkedList();
+	//MyLinkedList.LNode a=c.new LNode(5);
+	//c.add(5);
+	//c.add(6);
+	 // c.add(7);
+	 // c.add(3);
+	 // c.insertBefore(a,c.getNthNode(0));
 	// c.add(7);
 	// System.out.println(c);
 	// c.remove(2);
-	c.add(2);
+	//c.add(2);
 	//c.add(4);
-	c.addAfter(c.getNthNode(0),a);
+	//c.addAfter(c.getNthNode(0),a);
 	//c.add(3);
 	//c.add(3);
-	c.remove(c.getNthNode(0));
-	c.remove(c.getNthNode(0));
+	//c.remove(c.getNthNode(0));
+	//c.remove(c.getNthNode(0));
 	//System.out.println(c.remove(c.getNthNode(0)));
-	System.out.println(c);
+	//	System.out.println(c);
 	//c.insertAfter(a,c.getNode(0));
 	//System.out.println(c);
 	// for(int i=0;i<10000;i++){
@@ -381,8 +394,8 @@ public class MyLinkedList{
 	// System.out.println(c);
 	// // System.out.println(c.remove(4));
         // for(int j=9999;j>=0;j--){
-	//     //c.remove(j);
-	//     System.out.println(c.remove(j));
+	//     c.remove(c.getNthNode(j));
+	//     //System.out.println(c.remove(j));
 	// }
 	// System.out.println(c);
 	//System.out.println(c);
