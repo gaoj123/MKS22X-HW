@@ -1,4 +1,22 @@
-public class MyLinkedList{
+import java.util.*;
+import java.io.*;
+public class MyLinkedList implements Iterable<Integer>{
+    public Iterator<Integer> iterator(){
+	return new MyLinkedListIterator(this);
+    }
+    public class MyLinkedListIterator implements Iterator<Integer>{
+	MyLinkedList listNow;
+	public MyLinkedListIterator(MyLinkedList x){
+	    listNow=x;
+	}
+	// public boolean hasNext(){
+	// }
+	// public LNode next(){
+	// }
+	public void remove(){
+	    throw new UnsupportedOperationException();
+	}
+    }
     LNode start;
     LNode tail;
     int size;
