@@ -6,13 +6,24 @@ public class MyLinkedList implements Iterable<Integer>{
     }
     public class MyLinkedListIterator implements Iterator<Integer>{
 	MyLinkedList listNow;
+	LNode current;
 	public MyLinkedListIterator(MyLinkedList x){
 	    listNow=x;
+	    current=x.start;
 	}
-	// public boolean hasNext(){
-	// }
-	// public LNode next(){
-	// }
+	public boolean hasNext(){
+	    return !(current==null);
+	 }
+	 public Integer next(){
+	     if(hasNext()){
+		 int toRet=current.val;
+		 current=current.next;
+		 return toRet;
+	     }
+	     else{
+		 throw new NoSuchElementException();
+	     }
+	}
 	public void remove(){
 	    throw new UnsupportedOperationException();
 	}
@@ -375,17 +386,22 @@ public class MyLinkedList implements Iterable<Integer>{
 	return toRet;
     }
     public static void main(String[] args){
-	//insertBefore not working right now
-	//idk if remove is working properly/properly handling cases
-	//MyLinkedList c=new MyLinkedList();
+	// MyLinkedList c=new MyLinkedList();
+	// c.add(3);
+	// c.add(2);
 	//MyLinkedList.LNode a=c.new LNode(5);
-	//c.add(5);
-	//c.add(6);
-	 // c.add(7);
-	 // c.add(3);
-	 // c.insertBefore(a,c.getNthNode(0));
+	// c.add(5);
+	// c.add(6);
 	// c.add(7);
+	// c.add(3);
+	// c.add(1);
 	// System.out.println(c);
+	// for(Integer s:c){
+	//     System.out.println(s+" ");
+	// }
+	//c.insertBefore(a,c.getNthNode(1));
+	// c.add(7);
+	//System.out.println(c);
 	// c.remove(2);
 	//c.add(2);
 	//c.add(4);
