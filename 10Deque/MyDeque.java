@@ -8,6 +8,14 @@ public class MyDeque{
     public int size(){
 	return x.length;
     }
+    public boolean filled(){
+	for(int i=0;i<x.length;i++){
+	    if (x[i]=null){
+		return true;
+	    }
+	}
+	return false;
+    }
     //resize
     public int spacesFilled(){
 	if(back>front){
