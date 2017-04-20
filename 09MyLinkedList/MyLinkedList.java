@@ -73,6 +73,7 @@ public class MyLinkedList implements Iterable<Integer>{
 	if(size()==0){
 	    LNode newNode=new LNode(value);
 	    start=newNode;
+	    tail=newNode;
 	}
 	//--------Adds to Front------------
 	// LNode newNode=new LNode(value,start);
@@ -84,13 +85,15 @@ public class MyLinkedList implements Iterable<Integer>{
 	    LNode newNode=new LNode(value);
 	    LNode current=start;
 	    for(int i=0;i<size();i++){
-		if(i==size()-1){ //last link
-		    current.next=newNode;
-		    newNode.prev=current;
-		}
-		else{
-		    current=current.next;
-		}
+	    	if(i==size()-1){ //last link
+	    	    current.next=newNode;
+	    	    newNode.prev=current;
+	    	    newNode.prev.next=newNode;
+		    tail=newNode;
+	    	}
+	    	else{
+	    	    current=current.next;
+	    	}
 	    }
 	}
 	size++;
@@ -387,15 +390,15 @@ public class MyLinkedList implements Iterable<Integer>{
     }
     public static void main(String[] args){
 	// MyLinkedList c=new MyLinkedList();
-	// c.add(3);
-	// c.add(2);
+	//c.add(0);
+	//c.add(2);
 	//MyLinkedList.LNode a=c.new LNode(5);
 	// c.add(5);
 	// c.add(6);
 	// c.add(7);
 	// c.add(3);
 	// c.add(1);
-	// System.out.println(c);
+	//System.out.println(c);
 	// for(Integer s:c){
 	//     System.out.println(s+" ");
 	// }
