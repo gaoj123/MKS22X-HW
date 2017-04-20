@@ -145,8 +145,8 @@ public class MyDeque{
 	// test.addFirst("9");
 	// test.addLast("11");
 	// System.out.println(test);
-	// test.removeLast();
-	// test.removeLast();
+	// System.out.println(test.removeLast());
+	// System.out.println(test.removeFirst());
 	// test.addFirst("10");
 	//System.out.println(test.spacesFilled());
 	//System.out.println(test.getFirst());
