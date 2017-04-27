@@ -6,9 +6,25 @@ public class ExpressionTree{
 	  return getValue();
       }
       else{
-	  return perform(getOp(),getLeft.evaluate(),getRight.evaluate());
+	  return perform(getOp(),getLeft().evaluate(),getRight().evaluate());
       }
   }
+    public double perform(char op,double a,double b){
+	double toRet=0;
+	if(op=='+'){
+	    toRet=a+b;
+	}
+	else if(op=='-'){
+	    toRet=a-b;
+	}
+	else if(op=='*'){
+	    toRet=a*b;
+	}
+	if(op=='/'){
+	    toRet=a/b;
+	}
+	return toRet;
+    }
       // String[] arr=toStringPostfix.split(" ");
 	// Stack<Double> stack=new Stack<Double>();
 	// for(int i=arr.length-1;i>=0;i--){
@@ -126,32 +142,32 @@ public class ExpressionTree{
     System.out.println(c);
     System.out.println(c.toStringPostfix());
     System.out.println(c.toStringPrefix());
-    //System.out.println(c.evaluate());
+    System.out.println(c.evaluate());
 
 
     ExpressionTree d = new ExpressionTree('*',c,new ExpressionTree(3.5));
     System.out.println(d);
     System.out.println(d.toStringPostfix());
     System.out.println(d.toStringPrefix());
-    // System.out.println(d.evaluate());
+    System.out.println(d.evaluate());
 
     ExpressionTree ex = new ExpressionTree('-',d,new ExpressionTree(1.0));
     System.out.println(ex);
     System.out.println(ex.toStringPostfix());
     System.out.println(ex.toStringPrefix());
-    // System.out.println(ex.evaluate());
+    System.out.println(ex.evaluate());
 
     ex = new ExpressionTree('+',new ExpressionTree(1.0),ex);
     System.out.println(ex);
     System.out.println(ex.toStringPostfix());
     System.out.println(ex.toStringPrefix());
-    // System.out.println(ex.evaluate());
+    System.out.println(ex.evaluate());
 
     ex = new ExpressionTree('/',ex,new ExpressionTree(2.0));
     System.out.println(ex);
     System.out.println(ex.toStringPostfix());
     System.out.println(ex.toStringPrefix());
-    // System.out.println(ex.evaluate());
+    System.out.println(ex.evaluate());
     
     
   }
