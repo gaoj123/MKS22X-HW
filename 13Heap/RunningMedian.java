@@ -56,16 +56,20 @@ public class RunningMedian{
     }
     public static void main(String[] args){
 	RunningMedian test=new RunningMedian();
-	test.add(14);
-	test.add(450);
-	test.add(1000);
-	test.add(20);
-	test.add(5);
-	test.add(6);
+	// for(int i=0;i<20;i+=3){
+	//     test.add(i);
+	//     System.out.println(test.getMedian());
+	// }
+	// test.add(14);
+	// test.add(450);
+	// test.add(1000);
+	// test.add(20);
+	// test.add(5);
+	// test.add(6);
 	// System.out.println("size: "+test.maxHeap.size());
 	// System.out.println("size: "+test.minHeap.size());
-	System.out.println("median: "+test.getMedian());
-	System.out.println(test.maxHeap.peek());
-	System.out.println(test.minHeap.peek());
+	// System.out.println("median: "+test.getMedian());
+	// System.out.println(test.maxHeap.peek());
+	// System.out.println(test.minHeap.peek());
     }
 }
