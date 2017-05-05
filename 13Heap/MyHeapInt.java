@@ -92,7 +92,7 @@ public class MyHeapInt{
 	    int childInd1=2;
 	    int childInd2=3;
 	    while(finished==false){
-		if(childInd1*2>size()||childInd2*2>size()){
+		if(childInd1*2>size()&&childInd2*2>size()){
 		    finished=true;
 		}
 		if(maxx){
@@ -115,6 +115,9 @@ public class MyHeapInt{
 			    parentInd=ind;
 			    childInd1=parentInd*2;
 			    childInd2=parentInd*2+1;
+			    if(childInd1>size()||childInd2>size()){
+				finished=true;
+			    }
 			}
 			else{
 			    finished=true;
@@ -126,6 +129,9 @@ public class MyHeapInt{
 			    parentInd=childInd1;
 			    childInd1=parentInd*2;
 			    childInd2=parentInd*2+1;
+			    if(childInd1>size()||childInd2>size()){
+				finished=true;
+			    }
 			}
 			else{
 			    finished=true;
@@ -152,6 +158,9 @@ public class MyHeapInt{
 			    parentInd=ind;
 			    childInd1=parentInd*2;
 			    childInd2=parentInd*2+1;
+			    if(childInd1>size()||childInd2>size()){
+				finished=true;
+			    }
 			}
 			else{
 			    finished=true;
@@ -163,6 +172,9 @@ public class MyHeapInt{
 			    parentInd=childInd1;
 			    childInd1=parentInd*2;
 			    childInd2=parentInd*2+1;
+			    if(childInd1>size()||childInd2>size()){
+				finished=true;
+			    }
 			}
 			else{
 			    finished=true;
@@ -173,13 +185,18 @@ public class MyHeapInt{
 	}
     }
 public static void main(String[] args){
-    MyHeapInt a=new MyHeapInt(false);
-    a.add(23);
-    a.add(4);
-    a.add(76);
-    a.add(3);
-    a.add(4);
-    System.out.println("top "+a.peek());
+    //MyHeapInt a=new MyHeapInt(false);
+    // a.add(20);
+    // a.add(19);
+    // a.add(17);
+    // a.add(12);
+    // a.add(18);
+    // a.add(5);
+    // a.add(8);
+    // a.add(1);
+    // a.add(2);
+    // a.remove();
+    // System.out.println("top "+a.peek());
     // a.remove();
     // System.out.println("top "+a.peek());
     // a.remove();
