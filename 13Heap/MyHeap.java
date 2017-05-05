@@ -115,6 +115,9 @@ public class MyHeap{
 			    parentInd=ind;
 			    childInd1=parentInd*2;
 			    childInd2=parentInd*2+1;
+			    if(childInd1>size()||childInd2>size()){
+				finished=true;
+			    }
 			}
 			else{
 			    finished=true;
@@ -126,6 +129,9 @@ public class MyHeap{
 			    parentInd=childInd1;
 			    childInd1=parentInd*2;
 			    childInd2=parentInd*2+1;
+			    if(childInd1>size()||childInd2>size()){
+				finished=true;
+			    }
 			}
 			else{
 			    finished=true;
@@ -152,6 +158,9 @@ public class MyHeap{
 			    parentInd=ind;
 			    childInd1=parentInd*2;
 			    childInd2=parentInd*2+1;
+			    if(childInd1>size()||childInd2>size()){
+				finished=true;
+			    }
 			}
 			else{
 			    finished=true;
@@ -163,6 +172,9 @@ public class MyHeap{
 			    parentInd=childInd1;
 			    childInd1=parentInd*2;
 			    childInd2=parentInd*2+1;
+			    if(childInd1>size()||childInd2>size()){
+				finished=true;
+			    }
 			}
 			else{
 			    finished=true;
@@ -173,17 +185,17 @@ public class MyHeap{
 	}
     }
 public static void main(String[] args){
-    MyHeap a=new MyHeap(true);
-    for(int i=0;i<99;i++){
-	a.add(""+i);
-    }
+    // MyHeap a=new MyHeap(false);
+    // for(int i=0;i<99;i++){
+    // 	a.add(""+i);
+    // }
     // a.add("hi");
     // a.add("bye");
     // a.add("hello");
     // a.add("i");
     // a.add("123");
     // a.add("j");
-    System.out.println("top "+a.peek());
+    //System.out.println("top "+a.peek());
     // a.remove();
     // System.out.println("top "+a.peek());
     // a.remove();
