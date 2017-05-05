@@ -92,7 +92,7 @@ public class MyHeap{
 	    int childInd1=2;
 	    int childInd2=3;
 	    while(finished==false){
-		if(childInd1*2>size()){
+		if(childInd1*2>size()||childInd2*2>size()){
 		    finished=true;
 		}
 		if(maxx){
@@ -173,13 +173,17 @@ public class MyHeap{
 	}
     }
 public static void main(String[] args){
-    // MyHeap a=new MyHeap(false);
+    MyHeap a=new MyHeap(true);
+    for(int i=0;i<99;i++){
+	a.add(""+i);
+    }
     // a.add("hi");
     // a.add("bye");
     // a.add("hello");
     // a.add("i");
     // a.add("123");
-    // System.out.println("top "+a.peek());
+    // a.add("j");
+    System.out.println("top "+a.peek());
     // a.remove();
     // System.out.println("top "+a.peek());
     // a.remove();
