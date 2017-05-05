@@ -55,7 +55,7 @@ public class RunningMedian{
 	}
     }
     public static void main(String[] args){
-	RunningMedian test=new RunningMedian();
+	// RunningMedian test=new RunningMedian();
 	// for(int i=0;i<20;i+=3){
 	//     test.add(i);
 	//     System.out.println(test.getMedian());
