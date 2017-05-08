@@ -1,10 +1,10 @@
 public class RunningMedian{
-    MyHeapInt minHeap;
-    MyHeapInt maxHeap;
+    MyHeap minHeap;
+    MyHeap maxHeap;
     double median;
     public RunningMedian(){
-	minHeap=new MyHeapInt(false);
-	maxHeap=new MyHeapInt(true);
+	minHeap=new MyHeap(false);
+	maxHeap=new MyHeap(true);
 	median=0;
     }
     public double getMedian(){
@@ -55,11 +55,11 @@ public class RunningMedian{
 	}
     }
     public static void main(String[] args){
-	// RunningMedian test=new RunningMedian();
-	// for(int i=0;i<20;i+=3){
-	//     test.add(i);
-	//     System.out.println(test.getMedian());
-	// }
+	RunningMedian test=new RunningMedian();
+	for(int i=0;i<20;i+=1){
+	    test.add(i);
+	    System.out.println(test.getMedian());
+	}
 	// test.add(14);
 	// test.add(450);
 	// test.add(1000);
