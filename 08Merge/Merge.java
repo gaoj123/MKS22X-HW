@@ -14,10 +14,10 @@ public class Merge{
 	    }
 	    int[] left=makeArr(ary,0,divide-1);
 	    int[] right=makeArr(ary,divide,len-1);
-	    if(left.length!=1){
+	    if(left.length>1){
 		mergesort(left);
 	    }
-	    if(right.length!=1){
+	    if(right.length>1){
 		mergesort(right);
 	    }
 	    merge(left,right,ary);
