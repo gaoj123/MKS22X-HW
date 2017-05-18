@@ -13,8 +13,32 @@ public class Location implements Comparable<Location>{
 	this.distToGoal=distToGoal;
 
     }
-    public compareTo(Location other){
+    public int compareTo(Location other){
 	if(aStar){
+	    int mine=this.distToGoal+this.distToStart;
+	    int otherr=other.distToGoal+other.distToStart;
+	    if(mine<otherr){
+		return -1;
+	    }
+	    else if(mine==otherr){
+		return 0;
+	    }
+	    else{
+		return 1;
+	    }
+	}
+	else{
+	    int mine=this.distToGoal;
+	    int otherr=other.distToGoal;
+	    if(mine<otherr){
+		return -1;
+	    }
+	    else if(mine==otherr){
+		return 0;
+	    }
+	    else{
+		return 1;
+	    }
 	}
     }
 }
