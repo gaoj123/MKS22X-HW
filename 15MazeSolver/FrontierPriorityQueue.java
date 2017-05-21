@@ -1,3 +1,4 @@
+import java.util.*;
 public class FrontierPriorityQueue implements Frontier{
     private MyHeap heap;
     public FrontierPriorityQueue(){
