@@ -15,6 +15,9 @@ public class Location implements Comparable<Location>{
 	this.distToGoal=distToGoal;
 
     }
+    public int getDist(){
+	return distToStart;
+    }
     public int getRow(){
 	return row;
     }
