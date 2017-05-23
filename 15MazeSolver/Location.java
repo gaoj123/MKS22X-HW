@@ -4,6 +4,8 @@ public class Location implements Comparable<Location>{
     private int distToStart;
     private Location previous;
     private boolean aStar;
+    public Location(){
+    }
     public Location(int r,int c,Location previous,int distToStart, int distToGoal,boolean aStar){
 	row=r;
 	col=c;
@@ -12,6 +14,21 @@ public class Location implements Comparable<Location>{
 	this.distToStart=distToStart;
 	this.distToGoal=distToGoal;
 
+    }
+    public int getRow(){
+	return row;
+    }
+    public int getCol(){
+	return col;
+    }
+    public boolean getAStar(){
+	return aStar;
+    }
+    public Location getPrev(){
+	return previous;
+    }
+    public void setAStar(boolean a){
+	this.aStar=a;
     }
     public int compareTo(Location other){
 	if(aStar){
