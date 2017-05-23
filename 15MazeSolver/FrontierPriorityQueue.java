@@ -18,4 +18,7 @@ public class FrontierPriorityQueue implements Frontier{
 	boolean x=heap.peek()==null;
 	return !x;
     }
+    public int size(){
+	return heap.size();
+    }
 }
