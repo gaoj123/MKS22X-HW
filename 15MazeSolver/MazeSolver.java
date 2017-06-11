@@ -141,6 +141,9 @@ public class MazeSolver{
 	}
 	return board.toString();
     }
+	public String toString(int num){
+		return board.toString(num);
+	}
     public static void main(String[] args){
 	MazeSolver m = new MazeSolver("data5.dat", true);
         m.solve(3);
